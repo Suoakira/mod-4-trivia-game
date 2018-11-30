@@ -3,9 +3,20 @@ import Popup from "reactjs-popup"
 
 
 const GameTile = (props) => {
+
+    const shuffle = (a) => {
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+    }
     
-    
-    
+    const randomQuestions = () => {
+        const arrayOfAnswers = [props.question.incorrect_answers[0], props.question.incorrect_answers[1], props.question.incorrect_answers[2], props.question.correct_answer]
+        return shuffle(arrayOfAnswers)
+    }
+
     
     
     return (
@@ -24,16 +35,16 @@ const GameTile = (props) => {
                 
                 <div>
                     <div className="pad">
-                        <button>A: {props.question.incorrect_answers[0]}</button> 
+                        <button>A: {randomQuestions()[0]}</button> 
                     </div>
                     <div>                    
-                        <button>B: {props.question.incorrect_answers[1]}</button>
+                        <button>B: {randomQuestions()[1]}</button>
                     </div>
                     <div>
-                        <button>C: {props.question.incorrect_answers[2]}</button>
+                        <button>C: {randomQuestions()[2]}</button>
                     </div>
                     <div>
-                        <button>D: {props.question.correct_answer}</button>
+                        <button>D: {randomQuestions()[3]}</button>
                     </div>
                 </div>
 
