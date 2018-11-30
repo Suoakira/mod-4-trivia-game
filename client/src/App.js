@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './containers/NavBar';
 import GameArea from './containers/GameArea'
-import Sidebar from './components/SideBar'
+
+
 import Popup from "reactjs-popup";
 
 
@@ -62,7 +63,9 @@ render() {
   return (
     <div>
     <NavBar />
+
       <GameArea quizQuestions={this.state.quizQuestions} handleTileClick={handleTileClick} />
+
 
     </div>
   )
