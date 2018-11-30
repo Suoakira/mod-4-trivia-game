@@ -1,16 +1,54 @@
 import React, { Component } from 'react';
-import Index from './components/index'
 
 import './App.css';
+import NavBar from './containers/NavBar';
+import GameArea from './containers/GameArea'
+import Sidebar from './components/SideBar'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Index /> 
-      </div>
-    );
+
+const API = 'http://localhost:3000/api/v1/users/'
+const FILM = "https://opentdb.com/api.php?amount=1&category=11&difficulty=easy&type=multiple"
+const GAMES = "https://opentdb.com/api.php?amount=1&category=15&difficulty=easy&type=multiple"
+
+export default class App extends Component {
+  state = {
+      users: [],
+      scores: [],
+      quizQuestions: []
+  
   }
+
+  fetchData = async (url) => {
+      return await fetch(url)
+        .then(resp => resp.json())
+    }
+
+
+
+
+
+  
+    async componentDidMount() {
+      const data = await this.fetchData(API)
+      const film = await this.fetchData(FILM)
+      const games = await this.fetchData(GAMES)
+
+      this.setState({
+        users: [...data],
+        quizQuestions: [film.results[0], games.results[0]]
+      })
+    }
+
+  
+  
+render() {
+  return (
+    <div>
+    <NavBar />
+    {/* <Sidebar /> */}
+    <GameArea />
+    </div>
+  )
+}
 }
 
-export default App;
