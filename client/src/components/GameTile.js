@@ -7,6 +7,10 @@ import { Button, Header, Image, Modal, Icon, Progress } from 'semantic-ui-react'
 
 class GameTile extends Component {
 
+    state = {
+        timerHitZero: false
+    }
+
  
 
     shuffle = (a) => {
@@ -22,44 +26,65 @@ class GameTile extends Component {
         return randomArray = this.shuffle(arrayOfAnswers)
     }
 
+    setTimerHitZero = () => {
+        this.setState({
+            timerHitZero: true
+        })
+    }
+
     render() {
+        const { setTimerHitZero } = this
         
         this.randomQuestions()
     return (
-        <div>
-            <Modal
-                trigger={<Button>
-                    <div className="box">
-                        {this.props.question.category}
-                    </div>        
-                    </Button>}>
+        
+        this.state.timerHitZero ? 
 
-                <Modal.Header>
-                    {this.props.question.category}
-                
-                </Modal.Header>
-                <Modal.Content>
-                    {this.props.question.question}
-                </Modal.Content>
-                <div className="answer-buttons">
-                <Modal.Actions>
-                    <Button primary>
-                        A: {randomArray[0]}<br></br>
-                    </Button>
-                    <Button primary>
-                        B: {randomArray[1]}<br></br>
-                    </Button>
-                    <Button primary>
-                        C: {randomArray[2]}<br></br>
-                    </Button>
-                    <Button primary>
-                        D: {randomArray[3]}<br></br>
-                    </Button>
-                </Modal.Actions>
-                </div>
-                    <Timer />
-            </Modal>
-        </div>
+            <div>
+                <Modal>
+                    <Modal.Header>
+                        <div>
+                            <p>Times Up, next player</p>
+                        </div>
+                    </Modal.Header>
+                </Modal>
+            </div>
+            :
+            <div>
+                <Modal
+                    trigger={<Button>
+                        <div className="box">
+                            {this.props.question.category}
+                        </div>        
+                        </Button>}>
+
+                    <Modal.Header>
+                        {this.props.question.category}
+                    
+                    </Modal.Header>
+                    <Modal.Content>
+                        {this.props.question.question}
+                    </Modal.Content>
+                    <div className="answer-buttons">
+                    <Modal.Actions>
+                        <Button primary>
+                            A: {randomArray[0]}<br></br>
+                        </Button>
+                        <Button primary>
+                            B: {randomArray[1]}<br></br>
+                        </Button>
+                        <Button primary>
+                            C: {randomArray[2]}<br></br>
+                        </Button>
+                        <Button primary>
+                            D: {randomArray[3]}<br></br>
+                        </Button>
+                    </Modal.Actions>
+                    </div>
+                    <Timer setTimerHitZero={setTimerHitZero} />
+                </Modal>
+            </div>
+        
         )
     }
 }
