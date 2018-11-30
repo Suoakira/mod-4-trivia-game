@@ -41,11 +41,14 @@ class GameTile extends Component {
         this.state.timerHitZero ? 
 
             <div>
-                <Modal>
-                    <Modal.Header>
-                        <div>
-                            <p>Times Up, next player</p>
+                <Modal
+                    trigger={<Button>
+                        <div className="box">
+                            {this.props.question.category}
                         </div>
+                    </Button>}>
+                    <Modal.Header> 
+                        <p>Times Up, next player</p>
                     </Modal.Header>
                 </Modal>
             </div>
