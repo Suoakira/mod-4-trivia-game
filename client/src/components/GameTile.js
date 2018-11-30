@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from "reactjs-popup"
+// import Popup from "reactjs-popup"
 
 
 const GameTile = (props) => {
@@ -20,42 +20,38 @@ const GameTile = (props) => {
     
     
     return (
-        <Popup
-            trigger={<button className="button">
-                <div className="box">
-                    {props.question.category}
-                 </div>
+        <div></div>
+        // <Popup
+        //     trigger={<button className="button">
+        //         <div className="box">
+        //             {props.question.category}
+        //          </div>
          
-                 </button>}
-            modal
-            closeOnDocumentClick>
-            <span>
-                <h4>{props.question.category}</h4>
-                {props.question.question}
+        //          </button>}
+        //     modal
+        //     closeOnDocumentClick>
+        //     <span>
+        //         <h4>{props.question.category}</h4>
+        //         {props.question.question}
                 
-                <div>
-                    <div className="pad">
-                        <button>A: {randomQuestions()[0]}</button> 
-                    </div>
-                    <div>                    
-                        <button>B: {randomQuestions()[1]}</button>
-                    </div>
-                    <div>
-                        <button>C: {randomQuestions()[2]}</button>
-                    </div>
-                    <div>
-                        <button>D: {randomQuestions()[3]}</button>
-                    </div>
-                </div>
+        //         <div>
+        //             <div className="pad">
+        //                 <button>A: {randomQuestions()[0]}</button> 
+        //             </div>
+        //             <div>                    
+        //                 <button>B: {randomQuestions()[1]}</button>
+        //             </div>
+        //             <div>
+        //                 <button>C: {randomQuestions()[2]}</button>
+        //             </div>
+        //             <div>
+        //                 <button>D: {randomQuestions()[3]}</button>
+        //             </div>
+        //         </div>
 
-            </span>
-        </Popup>
-    
+        //     </span>
+        // </Popup>
 
-
-
-
-  
       )
 }
  

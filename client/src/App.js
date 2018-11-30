@@ -5,7 +5,6 @@ import NavBar from './containers/NavBar';
 import GameArea from './containers/GameArea'
 
 
-import Popup from "reactjs-popup";
 
 
 const API = 'http://localhost:3000/api/v1/users/'
