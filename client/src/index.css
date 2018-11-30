@@ -17,8 +17,8 @@ code {
   background: grey;
   /* padding: 10px; */
   /* margin: 3px; */
-  height: auto;
-  width: auto;
+  height: 200px;
+  width: 200px;
   
   text-align: center;
 }
@@ -34,3 +34,11 @@ code {
   margin: 1em;
   text-align: center
 }
+
+
+/* Game Area */
+.game-area-img {
+  background-image: url(https://placeimg.com/800/600/arch);
+}
+
+/* style="background-image: url(https://placeimg.com/800/600/arch) */
