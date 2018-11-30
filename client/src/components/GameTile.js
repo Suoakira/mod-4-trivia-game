@@ -1,58 +1,93 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Button, Header, Image, Modal, Icon, Progress } from 'semantic-ui-react'
+
 // import Popup from "reactjs-popup"
+    let randomArray =  undefined
+
+class GameTile extends Component {
+
+    state = { 
+        percent: 100 
+    }
+
+    // increment = () =>
+        // this.setState({
+        //     percent: this.state.percent >= 100 ? 0 : this.state.percent + 20,
+        // })
+    
+    decrease = () => {
+        this.setState({
+            percent: this.state.percent - 5
+        })
+    }
 
 
-const GameTile = (props) => {
+    timer = () => {
+        while (this.state.percent >= 0) {
 
-    const shuffle = (a) => {
+            this.decrease()
+
+
+        } 
+    }
+
+    
+
+    shuffle = (a) => {
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [a[i], a[j]] = [a[j], a[i]];
         }
         return a;
     }
-    
-    const randomQuestions = () => {
-        const arrayOfAnswers = [props.question.incorrect_answers[0], props.question.incorrect_answers[1], props.question.incorrect_answers[2], props.question.correct_answer]
-        return shuffle(arrayOfAnswers)
+
+    randomQuestions = () => {
+        const arrayOfAnswers = [this.props.question.incorrect_answers[0], this.props.question.incorrect_answers[1], this.props.question.incorrect_answers[2], this.props.question.correct_answer]
+        return randomArray = this.shuffle(arrayOfAnswers)
     }
 
-    
-    
+    render() {
+        
+        this.randomQuestions()
     return (
-        <div></div>
-        // <Popup
-        //     trigger={<button className="button">
-        //         <div className="box">
-        //             {props.question.category}
-        //          </div>
-         
-        //          </button>}
-        //     modal
-        //     closeOnDocumentClick>
-        //     <span>
-        //         <h4>{props.question.category}</h4>
-        //         {props.question.question}
+        <div>
+            <Modal
+                trigger={<Button>
+                    <div className="box">
+                        {this.props.question.category}
+                    </div>        
+                    </Button>}>
+
+                <Modal.Header>
+                    {this.props.question.category}
                 
-        //         <div>
-        //             <div className="pad">
-        //                 <button>A: {randomQuestions()[0]}</button> 
-        //             </div>
-        //             <div>                    
-        //                 <button>B: {randomQuestions()[1]}</button>
-        //             </div>
-        //             <div>
-        //                 <button>C: {randomQuestions()[2]}</button>
-        //             </div>
-        //             <div>
-        //                 <button>D: {randomQuestions()[3]}</button>
-        //             </div>
-        //         </div>
+                </Modal.Header>
+                <Modal.Content>
+                    {this.props.question.question}
+                </Modal.Content>
+                <Modal.Actions>
+                    <Button primary>
+                        A: {randomArray[0]}<br></br>
+                    </Button>
+                    <Button primary>
+                        B: {randomArray[1]}<br></br>
+                    </Button>
+                    <Button primary>
+                        C: {randomArray[2]}<br></br>
+                    </Button>
+                    <Button primary>
+                        D: {randomArray[3]}<br></br>
+                    </Button>
+                
+                </Modal.Actions>
+                <Progress percent={this.state.percent} indicating />
+                <Button onClick={this.timer}>Start</Button>
+            </Modal>
+        </div>
 
-        //     </span>
-        // </Popup>
 
-      )
+        )
+    }
 }
  
-export default GameTile;
+export default GameTile
