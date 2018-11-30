@@ -37,16 +37,6 @@ class GameTile extends Component {
         
         this.randomQuestions()
     return (
-
-        <div>
-            <Modal
-                trigger={<Button>
-                    <div className="quiz-box">
-                        {this.props.question.category}
-                    </div>        
-                    </Button>}>
-                <div>
-
         
         this.state.timerHitZero ? 
 
@@ -72,7 +62,10 @@ class GameTile extends Component {
                         {this.props.question.category}
                     
                     </Modal.Header>
-
+                    <Modal.Content>
+                        {this.props.question.question}
+                    </Modal.Content>
+                    <div className="answer-buttons">
                     <Modal.Actions>
                         <Button primary>
                             A: {randomArray[0]}<br></br>
@@ -87,7 +80,11 @@ class GameTile extends Component {
                             D: {randomArray[3]}<br></br>
                         </Button>
                     </Modal.Actions>
-
+                    </div>
+                    <Timer setTimerHitZero={setTimerHitZero} />
+                </Modal>
+            </div>
+        
         )
     }
 }
