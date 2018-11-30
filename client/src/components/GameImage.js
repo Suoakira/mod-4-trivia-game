@@ -1,8 +1,11 @@
 import React from 'react'
-import { Image } from 'semantic-ui-react'
 
-const GameImage = () => <Image src='https://placeimg.com/800/600/arch'  />
-
-
+ const GameImage = () => {
+  return (
+    <div>
+      <img src='https://placeimg.com/800/600/arch'></img>
+    </div>
+  )
+}
 
 export default GameImage

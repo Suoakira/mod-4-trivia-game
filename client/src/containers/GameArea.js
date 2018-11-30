@@ -24,74 +24,66 @@ export default class GameArea extends Component {
 
   render() {
     const { quizQuestions, handleTileClick } = this.props
+    
     return (
 
-      <div>
-        <Progress percent={this.state.percent} indicating />
-        <Button onClick={this.increment}>Start</Button>
-      <div className="container" >
-        {
-            this.quizQuestionsMap(quizQuestions, handleTileClick)
-        }
-      </div>
+    //   <div className="container" >
+    //     {
+    //         this.quizQuestionsMap(quizQuestions, handleTileClick)
+    //     }
+    //   </div>
   
 
+
+    <Grid>
+        {/* main body */}
+        <Grid.Column width={13}>
+
+        <div class="ui three column grid">
+        <div class="column">
         <RevealTile />
 
-        <Grid>
-    {/* main body */}
-    <Grid.Column width={13}>
-
-       <div class="ui three column grid">
-      <div class="column">
-      <RevealTile />
-
-      </div>
-      <div class="column">
-      <RevealTile />
+        </div>
+        <div class="column">
+        <RevealTile />
 
 
-      </div>
-      <div class="column">
-      <RevealTile />
+        </div>
+        <div class="column">
+        <RevealTile />
 
-      </div>
+        </div>
+        </div>
+        <div class="ui three column grid">
+        <div class="column">
+        <RevealTile />
+
+        </div>
+        <div class="column">
+        <RevealTile />
+
+        </div>
+        <div class="column">
+        <RevealTile />
+
+        </div>
     </div>
-    <div class="ui three column grid">
-    <div class="column">
-    <RevealTile />
 
-    </div>
-    <div class="column">
-    <RevealTile />
+        </Grid.Column>
 
-    </div>
-    <div class="column">
-    <RevealTile />
+        <Grid.Column width={3}>
 
-    </div>
-</div>
+        <GameImage /><br></br>
+        <GameImage /><br></br>
+        <GameImage />
+        <Progress percent={this.state.percent} indicating />
+        <Button onClick={this.increment}>Start</Button>
 
-    </Grid.Column>
-
-    {/* sidebar */}
-    <Grid.Column width={3}>
-
-      <GameImage /><br></br>
-      <GameImage /><br></br>
-      <GameImage />
-
-    </Grid.Column>
+        </Grid.Column>
   </Grid>
  
     )
   }
 }
 
-    //   <div>
-    //     <Progress percent={this.state.percent} indicating />
-    //     <Button onClick={this.increment}>Start</Button>
-    //     <GameImage />
-    //     <RevealTile />
-      
-    //   </div>
+  
