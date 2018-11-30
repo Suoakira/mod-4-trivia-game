@@ -53,7 +53,7 @@ class GameTile extends Component {
             <div>
                 <Modal
                     trigger={<Button>
-                        <div className="box">
+                        <div className="quiz-box">
                             {this.props.question.category}
                         </div>        
                         </Button>}>

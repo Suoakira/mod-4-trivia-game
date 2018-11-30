@@ -33,7 +33,8 @@ export default class GameArea extends Component {
     <Grid>
         {/* main body */}
         <Grid.Column width={13}>
-
+        {/* could flip css class w/ pic via function */}
+      <div class="game-area-img">
         <div class="ui three column grid">
         <div class="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[0]}
@@ -75,6 +76,7 @@ export default class GameArea extends Component {
         <div class="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[8]}
         </div>
+      </div>
     </div>
 
         </Grid.Column>
@@ -82,8 +84,7 @@ export default class GameArea extends Component {
         <Grid.Column width={3}>
 
         <GameImage /><br></br>
-        <GameImage /><br></br>
-        <GameImage />
+       
 
 
         </Grid.Column>
