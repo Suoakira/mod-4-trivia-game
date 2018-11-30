@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './containers/NavBar';
 import GameArea from './containers/GameArea'
-import Sidebar from './components/SideBar'
-
 
 const API = 'http://localhost:3000/api/v1/users/'
 const FILM = "https://opentdb.com/api.php?amount=1&category=11&difficulty=easy&type=multiple"
@@ -45,7 +43,6 @@ render() {
   return (
     <div>
     <NavBar />
-    {/* <Sidebar /> */}
     <GameArea />
     </div>
   )
