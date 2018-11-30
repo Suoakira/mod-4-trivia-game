@@ -22,59 +22,72 @@ export default class GameArea extends Component {
     
     return (
 
-      <div className="container" >
-        {
-            this.quizQuestionsMap(quizQuestions, handleTileClick)
-        }
-      </div>
+    //   <div className="container" >
+    //     {
+    //         this.quizQuestionsMap(quizQuestions, handleTileClick)
+    //     }
+    //   </div>
   
 
 
-  //   <Grid>
-  //       {/* main body */}
-  //       <Grid.Column width={13}>
+    <Grid>
+        {/* main body */}
+        <Grid.Column width={13}>
 
-  //       <div class="ui three column grid">
-  //       <div class="column">
-  //       <RevealTile />
+        <div class="ui three column grid">
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[0]}
+        
 
-  //       </div>
-  //       <div class="column">
-  //       <RevealTile />
-
-
-  //       </div>
-  //       <div class="column">
-  //       <RevealTile />
-
-  //       </div>
-  //       </div>
-  //       <div class="ui three column grid">
-  //       <div class="column">
-  //       <RevealTile />
-
-  //       </div>
-  //       <div class="column">
-  //       <RevealTile />
-
-  //       </div>
-  //       <div class="column">
-  //       <RevealTile />
-
-  //       </div>
-  //   </div>
-
-  //       </Grid.Column>
-
-  //       <Grid.Column width={3}>
-
-  //       <GameImage /><br></br>
-  //       <GameImage /><br></br>
-  //       <GameImage />
+        </div>
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[1]}
+        
 
 
-  //       </Grid.Column>
-  // </Grid>
+        </div>
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[2]}
+
+        </div>
+        </div>
+        <div class="ui three column grid">
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[3]}
+
+        </div>
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[4]}
+        </div>
+
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[5]}
+        </div>
+
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[6]}
+        </div>
+
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[7]}
+        </div>
+
+        <div class="column">
+        {this.quizQuestionsMap(quizQuestions, handleTileClick)[8]}
+        </div>
+    </div>
+
+        </Grid.Column>
+
+        <Grid.Column width={3}>
+
+        <GameImage /><br></br>
+        <GameImage /><br></br>
+        <GameImage />
+
+
+        </Grid.Column>
+  </Grid>
  
     )
   }
