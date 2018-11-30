@@ -28,3 +28,9 @@ code {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
+/* Question Box */
+.answer-buttons {
+  margin: 1em;
+  text-align: center;
+}

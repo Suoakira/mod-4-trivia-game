@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Timer from './Timer'
 import { Button, Header, Image, Modal, Icon, Progress } from 'semantic-ui-react'
 
 // import Popup from "reactjs-popup"
@@ -6,32 +7,7 @@ import { Button, Header, Image, Modal, Icon, Progress } from 'semantic-ui-react'
 
 class GameTile extends Component {
 
-    state = { 
-        percent: 100 
-    }
-
-    // increment = () =>
-        // this.setState({
-        //     percent: this.state.percent >= 100 ? 0 : this.state.percent + 20,
-        // })
-    
-    decrease = () => {
-        this.setState({
-            percent: this.state.percent - 5
-        })
-    }
-
-
-    timer = () => {
-        while (this.state.percent >= 0) {
-
-            this.decrease()
-
-
-        } 
-    }
-
-    
+ 
 
     shuffle = (a) => {
         for (let i = a.length - 1; i > 0; i--) {
@@ -65,6 +41,7 @@ class GameTile extends Component {
                 <Modal.Content>
                     {this.props.question.question}
                 </Modal.Content>
+                <div className="answer-buttons">
                 <Modal.Actions>
                     <Button primary>
                         A: {randomArray[0]}<br></br>
@@ -78,14 +55,11 @@ class GameTile extends Component {
                     <Button primary>
                         D: {randomArray[3]}<br></br>
                     </Button>
-                
                 </Modal.Actions>
-                <Progress percent={this.state.percent} indicating />
-                <Button onClick={this.timer}>Start</Button>
+                </div>
+                    <Timer />
             </Modal>
         </div>
-
-
         )
     }
 }
