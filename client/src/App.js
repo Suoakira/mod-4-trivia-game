@@ -55,15 +55,15 @@ export default class index extends Component {
 
 
 
-
   
 render() {
+
   const { handleTileClick } = this
   return (
     <div>
     <NavBar />
 
-      <GameArea quizQuestions={this.state.quizQuestions} handleTileClick={handleTileClick} />
+      <GameArea  quizQuestions={this.state.quizQuestions} handleTileClick={handleTileClick} />
 
 
     </div>

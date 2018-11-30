@@ -29,33 +29,34 @@ class GameTile extends Component {
         <div>
             <Modal
                 trigger={<Button>
-                    <div className="box">
+                    <div className="quiz-box">
                         {this.props.question.category}
                     </div>        
                     </Button>}>
-
-                <Modal.Header>
-                    {this.props.question.category}
-                
-                </Modal.Header>
+                <div>
+                    <Modal.Header>
+                        {this.props.question.category}
+                    
+                    </Modal.Header>
+                </div>
                 <Modal.Content>
                     {this.props.question.question}
                 </Modal.Content>
                 <div className="answer-buttons">
-                <Modal.Actions>
-                    <Button primary>
-                        A: {randomArray[0]}<br></br>
-                    </Button>
-                    <Button primary>
-                        B: {randomArray[1]}<br></br>
-                    </Button>
-                    <Button primary>
-                        C: {randomArray[2]}<br></br>
-                    </Button>
-                    <Button primary>
-                        D: {randomArray[3]}<br></br>
-                    </Button>
-                </Modal.Actions>
+                    <Modal.Actions>
+                        <Button primary>
+                            A: {randomArray[0]}<br></br>
+                        </Button>
+                        <Button primary>
+                            B: {randomArray[1]}<br></br>
+                        </Button>
+                        <Button primary>
+                            C: {randomArray[2]}<br></br>
+                        </Button>
+                        <Button primary>
+                            D: {randomArray[3]}<br></br>
+                        </Button>
+                    </Modal.Actions>
                 </div>
                     <Timer />
             </Modal>
