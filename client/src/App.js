@@ -4,18 +4,15 @@ import './App.css';
 import NavBar from './containers/NavBar';
 import GameArea from './containers/GameArea'
 
-
-
-
 const API = 'http://localhost:3000/api/v1/users/'
 const FILM = "https://opentdb.com/api.php?amount=1&category=11&difficulty=easy&type=multiple"
 const GAMES = "https://opentdb.com/api.php?amount=1&category=15&difficulty=easy&type=multiple"
 const TV = "https://opentdb.com/api.php?amount=1&category=14&difficulty=easy&type=multiple"
 const SPORTS = "https://opentdb.com/api.php?amount=1&category=21&difficulty=easy&type=multiple"
 const GENERAL = "https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=multiple"
-const MATH = "https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple"
+const MATH = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=multiple"
 const GEOGRAPHY = "https://opentdb.com/api.php?amount=1&category=22&difficulty=easy"
-const MUSIC = "https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple"
+const MUSIC = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=multiple"
 const MYTHOLOGY = "https://opentdb.com/api.php?amount=1&category=20&difficulty=easy&type=multiple"
 
 export default class index extends Component {
@@ -24,15 +21,27 @@ export default class index extends Component {
     scores: [],
     quizQuestions: []
   }
+  // removes quotes from questions
+  iterate = (genre) => {
+  
+    genre.question.replace(/&quot;/g, '"')
+    genre.correct_answer.replace(/&quot;/g, '"')
+    genre.incorrect_answers[0].replace(/&quot;/g, '"')
+    genre.incorrect_answers[1].replace(/&quot;/g, '"')
+    genre.incorrect_answers[2].replace(/&quot;/g, '"')
+
+  }
+
 
   fetchData = async (url) => {
     return await fetch(url)
       .then(resp => resp.json())
   }
+  
 
   async componentDidMount() {
     const data = await this.fetchData(API)
-
+    
     const film = await this.fetchData(FILM)
     const games = await this.fetchData(GAMES)
     const tv = await this.fetchData(TV)
@@ -49,14 +58,24 @@ export default class index extends Component {
     })
   }
 
-  handleTileClick = (question) =>
-    console.log("clicked")
 
 
 
+  // work in progress
+  // parseLocalState = () => {
+  //   const copyQuizQuestions = [...this.state.quizQuestions]
+  //   copyQuizQuestions.map(question => this.iterate(question))
+  //   this.setState({quizQuestions: copyQuizQuestions})
+  // }
+
+  // currently unused tile click handler 
+  // handleTileClick = (question) =>
+  //   console.log("clicked")
 
   
 render() {
+
+  
 
   const { handleTileClick } = this
   return (

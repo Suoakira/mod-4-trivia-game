@@ -34,46 +34,46 @@ export default class GameArea extends Component {
         {/* main body */}
         <Grid.Column width={13}>
         {/* could flip css class w/ pic via function */}
-      <div class="game-area-img">
-        <div class="ui three column grid">
-        <div class="column">
+      <div className="game-area-img">
+        <div className="ui three column grid">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[0]}
         
 
         </div>
-        <div class="column">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[1]}
         
 
 
         </div>
-        <div class="column">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[2]}
 
         </div>
         </div>
-        <div class="ui three column grid">
-        <div class="column">
+        <div className="ui three column grid">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[3]}
 
         </div>
-        <div class="column">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[4]}
         </div>
 
-        <div class="column">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[5]}
         </div>
 
-        <div class="column">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[6]}
         </div>
 
-        <div class="column">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[7]}
         </div>
 
-        <div class="column">
+        <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[8]}
         </div>
       </div>
