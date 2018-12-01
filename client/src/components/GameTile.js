@@ -14,7 +14,10 @@ class GameTile extends Component {
 
     // ====================== close an open Modal=======================================
     close = () =>
-        this.setState({ showModal: false })
+        this.setState({ showModal: false,
+                        showModalCorrect: false
+        })
+
     
 
     open = () =>
@@ -46,6 +49,7 @@ class GameTile extends Component {
             answerD: this.props.question.correct_answer,
             correctAnswerGiven: false,
             timesUp: false,
+            showModalCorrect: true
         }) 
     }
 
@@ -61,7 +65,7 @@ class GameTile extends Component {
 
         case this.state.correctAnswer: 
                 this.setState({
-                questionCategory: "Correct!",
+                questionCategory: "Correct! Now Have a guess!",
                 correctAnswerGiven: true
             })
             
@@ -94,7 +98,8 @@ class GameTile extends Component {
             showModal: false,
             timerHitZero: false,
             correctAnswerGiven: false,
-            onClose: false
+            onClose: false,
+            showModalCorrect: true
         })
     }
     
@@ -111,7 +116,23 @@ class GameTile extends Component {
         <div>
         {
         this.state.correctAnswerGiven ?
-            null
+            <div>
+                <Modal
+                    closeOnDimmerClick={false} 
+                    open={this.state.showModalCorrect}
+                    onClose={this.close}
+                    >
+
+                    <Modal.Header >
+                        {questionCategory}
+                    </Modal.Header>
+                    <Modal.Actions>
+                    <Button primary onClick={() => this.close()} >
+                            Close
+                    </Button>
+                    </Modal.Actions>
+                </Modal>            
+            </div>
             :
             <div className="quiz-box">
                 <button onClick={() => this.open()}>
