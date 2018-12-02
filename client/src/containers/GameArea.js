@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Sidebar } from 'semantic-ui-react'
 import GameImage from '../components/GameImage'
-import RevealTile from '../components/RevealTile'
 import GameTile from "../components/GameTile"
-
+import SideBar from '../containers/SideBar'
 
 
 import { Button, Progress } from 'semantic-ui-react'
@@ -32,7 +31,7 @@ export default class GameArea extends Component {
 
     <Grid>
         {/* main body */}
-        <Grid.Column width={13}>
+        <Grid.Column width={12}>
         {/* could flip css class w/ pic via function */}
       <div className="game-area-img">
         <div className="ui three column grid">
@@ -78,16 +77,12 @@ export default class GameArea extends Component {
         </div>
       </div>
     </div>
+  </Grid.Column>
 
+        <Grid.Column width={4}>
+          <SideBar />  
         </Grid.Column>
 
-        <Grid.Column width={3}>
-
-        <GameImage /><br></br>
-       
-
-
-        </Grid.Column>
   </Grid>
  
     )
