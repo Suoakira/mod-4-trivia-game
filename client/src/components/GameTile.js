@@ -7,24 +7,52 @@ import { Button, Header, Image, Modal, Icon, Progress } from 'semantic-ui-react'
 
 
 class GameTile extends Component {
-    
-    state = {
-   
-    }
+
+    constructor(props) {
+        super(props)
+        this.randomAnswerArray = this.shuffle([this.props.question.incorrect_answers[0],
+            this.props.question.incorrect_answers[1],
+            this.props.question.incorrect_answers[2],
+            this.props.question.correct_answer])
+
+        this.defaultSettings = {
+            questionCategory: this.props.question.category,
+            mainQuestion: this.props.question.question,
+            answerA: this.randomAnswerArray[0],
+            answerB: this.randomAnswerArray[1],
+            answerC: this.randomAnswerArray[2],
+            answerD: this.randomAnswerArray[3],
+            correctAnswer: this.props.question.correct_answer,
+            timesUp: false,
+            showModal: false,
+            correctAnswerGiven: false,
+            buttonClass: "ui button primary",
+            displayTile: false,
+            answerSubmit: true
+        }
+        this.state = {}
+        }
 
     // ====================== close an open Modal=======================================
-    close = () =>
-        this.setState({ showModal: false,
-                        showModalCorrect: false
-        })
 
-    
+    close = () =>
+        this.setState( this.defaultSettings, 
+            )
 
     open = () =>
         this.setState({ showModal: true })
+
+
+    correctClose = () => 
+        this.setState({ 
+            displayTile: true,
+            correctAnswerGiven: true
+         })
+    
     
 
     // ======================  shuffle answers so random ===============================
+
     shuffle = (a) => {
         for (let i = a.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -34,105 +62,82 @@ class GameTile extends Component {
     }
 
     // ======================= Game Logic ==============================================
+
     handleTimerUp = () => {
         this.wrongAnswerGiven()
     }
 
     wrongAnswerGiven = () => {
-        this.close()
         this.setState({
-            questionCategory: this.props.question.category,
-            mainQuestion: this.props.question.question,
-            answerA: this.props.question.incorrect_answers[0],
-            answerB: this.props.question.incorrect_answers[1],
-            answerC: this.props.question.incorrect_answers[2],
-            answerD: this.props.question.correct_answer,
-            correctAnswerGiven: false,
-            timesUp: false,
-            showModalCorrect: true
-        }) 
+            questionCategory: "Incorrect",
+            mainQuestion: "Try another Topic? If your finding this one tough!"
+
+        })
     }
 
     setTimerHitZero = () => {
         this.setState({
             timesUp: true,
-            questionCategory: "Oh No!You Failed To Guess In Time!",
+            questionCategory: "Try another Topic?",
+            mainQuestion: "Try another Topic? If your finding this one tough!"
         })
     }
 
-    handleAnswerButton = (answer) => {
-    switch (answer) {
+    // iterates through dom, and changes colors of buttons
+    domManipulator = (notThisClass, event) => event.target.parentNode.querySelectorAll("button").forEach(button =>
+        button.className !== notThisClass ?
+            button.className = "ui button primary disabled"
+            :
+            null)
 
-        case this.state.correctAnswer: 
-                this.setState({
-                questionCategory: "Correct! Now Have a guess!",
-                correctAnswerGiven: true
-            })
-            
-        break
-        default:
-            {
+    handleAnswerButton = (answer, event) => {
+
+
+        if (answer === this.state.correctAnswer) {
+
             this.setState({
-                timesUp: true,
-                questionCategory: "Thats the Wrong Answer. Try Again!",
-                
+                questionCategory: "Correct",
+                mainQuestion: "Well done! Now see if you can guess what the catchphrase is behind the tiles!",
+                correctAnswerGiven: true,
+                answerSubmit: false
+            
             })
-            }
+            event.target.className = "ui button positive disabled" 
+            this.domManipulator("ui button positive disabled", event)
+       
+
+        } else { 
+            this.setState({
+                questionCategory: "Incorrect",
+                mainQuestion: "Try another topic, if your finding this one to hard!",
+                answerSubmit: false
+            })  
+            event.target.className = "ui button negative disabled"  
+
+            this.domManipulator("ui button negative disabled", event)
+ 
         }
-     }
-
+    }
+     
     // ====================== game begins ===========================
+
     componentWillMount() {
-
-
-        
-        this.setState({
-            questionCategory: this.props.question.category,
-            mainQuestion: this.props.question.question,
-            answerA: this.props.question.incorrect_answers[0],
-            answerB: this.props.question.incorrect_answers[1],
-            answerC: this.props.question.incorrect_answers[2],
-            answerD: this.props.question.correct_answer,
-            correctAnswer: this.props.question.correct_answer,
-            timesUp: false,
-            showModal: false,
-            timerHitZero: false,
-            correctAnswerGiven: false,
-            onClose: false,
-            showModalCorrect: true
-        })
+        this.setState(this.defaultSettings)
     }
     
-
     render() {
      
-        const { setTimerHitZero, handleAnswerButton } = this
-        const { question } = this.props
-        const { mainQuestion, questionCategory, answerA, answerB, answerC, answerD, correctAnswer } = this.state
-        const randomAnswerArray = [answerA, answerB, answerC, answerD]
-        this.shuffle(randomAnswerArray)
+        const { setTimerHitZero, handleAnswerButton, close, correctClose } = this
+        const { mainQuestion, questionCategory, buttonClass, answerA, answerB, answerC, answerD } = this.state
+        
+        
         
     return (
         <div>
-        {
-        this.state.correctAnswerGiven ?
-            <div>
-                <Modal
-                    closeOnDimmerClick={false} 
-                    open={this.state.showModalCorrect}
-                    onClose={this.close}
-                    >
+            {
+            this.state.displayTile ?
 
-                    <Modal.Header >
-                        {questionCategory}
-                    </Modal.Header>
-                    <Modal.Actions>
-                    <Button primary onClick={() => this.close()} >
-                            Close
-                    </Button>
-                    </Modal.Actions>
-                </Modal>            
-            </div>
+            null
             :
             <div className="quiz-box">
                 <button onClick={() => this.open()}>
@@ -151,43 +156,76 @@ class GameTile extends Component {
                         {questionCategory}
                     </Modal.Header>
                         
-                    {
-                        this.state.timesUp ?
-                    <div>   
-                        <Modal.Actions>
-                                <Button primary onClick={() => this.handleTimerUp()} >
-                                Close
-                            </Button>
-                        </Modal.Actions>
-                    </div>
-                    :
                     <div>
                         <Modal.Content>
                             <br></br>
                                 {mainQuestion}
                         </Modal.Content>
                         <div className="answer-buttons">
-                            <Modal.Actions>
-                                <Button primary onClick={() => handleAnswerButton(randomAnswerArray[0])}>
-                                    A: {randomAnswerArray[0]}<br></br>
-                                </Button>
-                                <Button primary onClick={() => handleAnswerButton(randomAnswerArray[1])}>
-                                    B: {randomAnswerArray[1]}<br></br>
-                                </Button>
-                                <Button primary onClick={() => handleAnswerButton(randomAnswerArray[2])}>
-                                    C: {randomAnswerArray[2]}<br></br>
-                                </Button>
-                                <Button primary onClick={() => handleAnswerButton(randomAnswerArray[3])}>
-                                    D: {randomAnswerArray[3]}<br></br>
-                                </Button>
-                            </Modal.Actions>
+
+                            
+                            { this.state.timesUp ?
+                        <Modal.Actions>
+                            <Button className="ui teal" onClick={() => close()}>
+                                Close<br></br>
+                            </Button>
+                        </Modal.Actions>
+    
+                                :
+                        <Modal.Actions>
+                            <Button className={buttonClass} onClick={(event) => handleAnswerButton(answerA, event)}>
+                                A: {answerA}<br></br>
+                            </Button>
+                            <Button className={buttonClass} onClick={(event) => handleAnswerButton(answerB, event)}>
+                                B: {answerB}<br></br>
+                            </Button>
+                            <Button className={buttonClass} onClick={(event) => handleAnswerButton(answerC, event)}>
+                                C: {answerC}<br></br>
+                            </Button>
+                            <Button className={buttonClass} onClick={(event) => handleAnswerButton(answerD, event)}>
+                                D: {answerD}<br></br>
+                            </Button>
+                        </Modal.Actions>
+                            }
+                            
+                            <div>
+                                {
+                                    <div>
+                                        {
+                                        this.state.answerSubmit ?
+                                        null
+                                        :
+                                    this.state.correctAnswerGiven ?
+                                    
+                                    <Modal.Actions>
+                                        <br></br>
+                                        <Button className="ui teal" onClick={() => correctClose()}>
+                                            Close
+                                        </Button>
+                                       
+                                    </Modal.Actions>
+                                    :
+                                    <Modal.Actions>
+                                        <br></br>
+                                       <Button className="ui teal" onClick={() => close()}>
+                                            Close
+                                       </Button>
+                                    </Modal.Actions>
+
+                                        }
+                                    </div>
+
+                                }
+                            </div>      
+
                         </div>
                         <Timer setTimerHitZero={setTimerHitZero} />
                     </div>
-                    }
+                    
                 </Modal>
             </div>
-        }
+            }
+        
     </div>
         )
     }
