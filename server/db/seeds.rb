@@ -22,3 +22,12 @@ Score.create(score: 98, user_id: 2)
 Score.create(score: 56, user_id: 1)
 Score.create(score: 23, user_id: 3)
 Score.create(score: 25, user_id: 5)
+
+
+Comment.create(comment: 'Yeehaw!', user_id: 1)
+Comment.create(comment: 'Send Nudes!', user_id: 3)
+Comment.create(comment: 'Aww yeah!', user_id: 3)
+Comment.create(comment: 'asl?', user_id: 2)
+Comment.create(comment: 'Im a nut', user_id: 4)
+Comment.create(comment: 'Woop woop', user_id: 5)
+Comment.create(comment: 'Trees!', user_id: 5)
