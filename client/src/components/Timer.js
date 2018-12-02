@@ -19,7 +19,7 @@ class Timer extends Component {
         }
       }
       componentDidMount() {
-        this.intervalId = setInterval(this.timer.bind(this), 30);
+        this.intervalId = setInterval(this.timer.bind(this), 100);
       }
       componentWillUnmount(){
         clearInterval(this.intervalId);

@@ -83,7 +83,7 @@ render() {
     <NavBar />
 
       <GameArea  quizQuestions={this.state.quizQuestions} handleTileClick={handleTileClick} />
-
+      
 
     </div>
   )
