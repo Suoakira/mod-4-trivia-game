@@ -41,4 +41,8 @@ code {
   background-image: url(https://placeimg.com/800/600/arch);
 }
 
+.game-image-form {
+  margin: 2em;
+}
+
 /* style="background-image: url(https://placeimg.com/800/600/arch) */
