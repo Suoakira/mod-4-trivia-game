@@ -150,12 +150,15 @@ class GameTile extends Component {
             this.state.displayTile ?
             null
             :
-            <div className="quiz-box">
-                <button id="questionSelect" onClick={() => this.open()}>
-                    <div className="quiz-box">
+                    <div>
+                        <div className="quiz-box">
+
+                            <button id="questionSelect" onClick={() => this.open()}>
+                    
                         {questionCategory}
-                    </div>
-                </button>
+                
+                        </button>
+                </div>
                 
                 <Modal
                     closeOnDimmerClick={false} 
