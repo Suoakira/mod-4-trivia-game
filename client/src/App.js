@@ -19,25 +19,41 @@ export default class index extends Component {
   state = {
     users: [],
     scores: [],
-    quizQuestions: []
+    quizQuestions: [],
+    userPoints: 1000,
+    catchPhrase: false
   }
   // removes quotes from questions
   iterate = (genre) => {
   
-    genre.question.replace(/&quot;/g, '"')
-    genre.correct_answer.replace(/&quot;/g, '"')
-    genre.incorrect_answers[0].replace(/&quot;/g, '"')
-    genre.incorrect_answers[1].replace(/&quot;/g, '"')
-    genre.incorrect_answers[2].replace(/&quot;/g, '"')
+    genre.results[0].question.replace(/&quot;/g, '"')
+    genre.results[0].correct_answer.replace(/&quot;/g, '"')
+    genre.results[0].incorrect_answers[0].replace(/&quot;/g, '"')
+    genre.results[0].incorrect_answers[1].replace(/&quot;/g, '"')
+    genre.results[0].incorrect_answers[2].replace(/&quot;/g, '"')
 
   }
-
 
   fetchData = async (url) => {
     return await fetch(url)
       .then(resp => resp.json())
   }
-  
+
+  questionPoints = (answer) => {
+      if (answer === "correct" ) 
+      this.setState({
+        userPoints: this.state.userPoints + 50
+      })
+      else if (answer === "incorrect")
+      this.setState({
+        userPoints: this.state.userPoints - 50
+      })
+      return this.state.userPoints
+      
+    }
+
+    currentPoints = () =>
+      this.state.userPoints
 
   async componentDidMount() {
     const data = await this.fetchData(API)
@@ -58,9 +74,6 @@ export default class index extends Component {
     })
   }
 
-
-
-
   // work in progress
   // parseLocalState = () => {
   //   const copyQuizQuestions = [...this.state.quizQuestions]
@@ -71,18 +84,19 @@ export default class index extends Component {
   // currently unused tile click handler 
   // handleTileClick = (question) =>
   //   console.log("clicked")
+  
 
   
 render() {
 
   
 
-  const { handleTileClick } = this
+  const { handleTileClick, questionPoints, currentPoints } = this
   return (
     <div>
     <NavBar />
 
-      <GameArea  quizQuestions={this.state.quizQuestions} handleTileClick={handleTileClick} />
+      <GameArea quizQuestions={this.state.quizQuestions} handleTileClick={handleTileClick} questionPoints={questionPoints} currentPoints={currentPoints} />
       
 
     </div>
