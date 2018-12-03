@@ -76,7 +76,7 @@ export default class GameArea extends Component {
           null
           :
       <div className="game-image-form">
-        <GameImageGuessForm correctAnswer={correctAnswer} points={this.props.questionPoints} toggleForm={this.toggleForm} disableAllButtons={this.disableAllButtons} />
+                  <GameImageGuessForm correctAnswer={correctAnswer} points={this.props.questionPoints} toggleForm={this.toggleForm} disableAllButtons={this.disableAllButtons} />
       </div>
 
         }
