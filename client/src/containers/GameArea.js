@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Grid, Image, Sidebar } from 'semantic-ui-react'
-import GameImage from '../components/GameImage'
 import GameTile from "../components/GameTile"
 import SideBar from '../containers/SideBar'
+import GameImageGuess from '../components/GameImageGuess'
 
 
 import { Button, Progress } from 'semantic-ui-react'
@@ -21,17 +21,19 @@ export default class GameArea extends Component {
     
     return (
 
-    //   <div className="container" >
-    //     {
-    //         this.quizQuestionsMap(quizQuestions, handleTileClick)
-    //     }
-    //   </div>
-  
+    <div>
+      
 
-
-    <Grid>
+    <Grid >
+    
         {/* main body */}
         <Grid.Column width={12}>
+        
+      <div className="game-image-form">
+        <GameImageGuess />
+      </div>
+
+
         {/* could flip css class w/ pic via function */}
       <div className="game-area-img">
         <div className="ui three column grid">
@@ -84,7 +86,7 @@ export default class GameArea extends Component {
         </Grid.Column>
 
   </Grid>
- 
+  </div>
     )
   }
 }

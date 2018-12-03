@@ -14,7 +14,7 @@ code {
 }
 
 .quiz-box {
-  background: grey;
+  background: white;
   /* padding: 10px; */
   margin: 3px;
   height: 200px;
@@ -39,6 +39,10 @@ code {
 /* Game Area */
 .game-area-img {
   background-image: url(https://placeimg.com/800/600/arch);
+}
+
+.game-image-form {
+  margin: 2em;
 }
 
 /* style="background-image: url(https://placeimg.com/800/600/arch) */
