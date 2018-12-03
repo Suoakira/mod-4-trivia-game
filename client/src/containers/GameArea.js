@@ -9,17 +9,20 @@ import { Button, Progress } from 'semantic-ui-react'
 
 
 export default class GameArea extends Component {
-    
+  
+  state = {}
 
 
-    quizQuestionsMap = (questions, handleClick) => 
-      questions.map(question => <GameTile question={question} handleTileClick={handleClick}  />)
+
+  quizQuestionsMap = (questions, handleClick) =>
+    questions.map(question => <GameTile question={question} handleTileClick={handleClick} points={this.props.questionPoints} />)
 
 
   render() {
-    const { quizQuestions, handleTileClick } = this.props
-    
+    const { quizQuestions, handleTileClick, currentPoints } = this.props
+
     return (
+
 
     <div>
       
@@ -82,13 +85,13 @@ export default class GameArea extends Component {
   </Grid.Column>
 
         <Grid.Column width={4}>
-          <SideBar />  
+          <SideBar currentPoints={currentPoints}/>
         </Grid.Column>
+
 
   </Grid>
   </div>
+
     )
   }
 }
-
-  

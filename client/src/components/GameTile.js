@@ -14,6 +14,7 @@ class GameTile extends Component {
             this.props.question.incorrect_answers[1],
             this.props.question.incorrect_answers[2],
             this.props.question.correct_answer])
+        this.remainingPoints = 0
 
         this.defaultSettings = {
             questionCategory: this.props.question.category,
@@ -36,7 +37,7 @@ class GameTile extends Component {
     // ====================== close an open Modal=======================================
 
     close = () =>
-        this.setState( this.defaultSettings, 
+        this.setState( this.defaultSettings,
             )
 
     open = () =>
@@ -96,25 +97,30 @@ class GameTile extends Component {
         if (answer === this.state.correctAnswer) {
 
             this.setState({
-                questionCategory: "Correct",
+                questionCategory: "Correct +50 Points",
                 mainQuestion: "Well done! Now see if you can guess what the catchphrase is behind the tiles!",
                 correctAnswerGiven: true,
                 answerSubmit: false
-            
             })
             event.target.className = "ui button positive disabled" 
             this.domManipulator("ui button positive disabled", event)
+            this.remainingPoints = this.props.points("correct")
        
 
         } else { 
             this.setState({
-                questionCategory: "Incorrect",
-                mainQuestion: "Try another topic, if you're finding this one to hard!",
+
+                questionCategory: "Incorrect -50 Points",
+                mainQuestion: "Try another topic, if your finding this one to hard!",
+
                 answerSubmit: false
             })  
             event.target.className = "ui button negative disabled"  
 
             this.domManipulator("ui button negative disabled", event)
+            this.remainingPoints = this.props.points("incorrect")
+            
+
  
         }
     }
