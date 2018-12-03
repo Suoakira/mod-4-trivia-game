@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
 export default class GameImageGuessForm extends Component {
     state = {
-        userInput: '',
+        userInput: ''
     }
 
     userGuess = userInput => {
@@ -12,6 +12,9 @@ export default class GameImageGuessForm extends Component {
         } else {
             console.log('Wrong');
             this.props.points("notcatchphrase")
+            this.props.toggleForm()
+            this.props.disableAllButtons()
+
         }
     }
 
