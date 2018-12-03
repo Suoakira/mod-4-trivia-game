@@ -56,7 +56,7 @@ export default class GameArea extends Component {
         <Grid.Column width={12}>
         
       <div className="game-image-form">
-        <GameImageGuessForm correctAnswer={correctAnswer}/>
+        <GameImageGuessForm correctAnswer={correctAnswer} points={this.props.questionPoints}/>
       </div>
 
 
