@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Grid, Image, Sidebar } from 'semantic-ui-react'
 import GameTile from "../components/GameTile"
 import SideBar from '../containers/SideBar'
-import GameImageGuess from '../components/GameImageGuess'
+import GameImageGuessForm from '../components/GameImageGuessForm'
 
 
 import { Button, Progress } from 'semantic-ui-react'
@@ -56,7 +56,7 @@ export default class GameArea extends Component {
         <Grid.Column width={12}>
         
       <div className="game-image-form">
-        <GameImageGuess correctAnswer={correctAnswer}/>
+        <GameImageGuessForm correctAnswer={correctAnswer}/>
       </div>
 
 
