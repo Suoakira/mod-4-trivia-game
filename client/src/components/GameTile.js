@@ -70,7 +70,7 @@ class GameTile extends Component {
     wrongAnswerGiven = () => {
         this.setState({
             questionCategory: "Incorrect",
-            mainQuestion: "Try another Topic? If your finding this one tough!"
+            mainQuestion: "Try another Topic? If you're finding this one tough!"
 
         })
     }
@@ -79,7 +79,7 @@ class GameTile extends Component {
         this.setState({
             timesUp: true,
             questionCategory: "Try another Topic?",
-            mainQuestion: "Try another Topic? If your finding this one tough!"
+            mainQuestion: "Try another Topic? If you're finding this one tough!"
         })
     }
 
@@ -109,7 +109,7 @@ class GameTile extends Component {
         } else { 
             this.setState({
                 questionCategory: "Incorrect",
-                mainQuestion: "Try another topic, if your finding this one to hard!",
+                mainQuestion: "Try another topic, if you're finding this one to hard!",
                 answerSubmit: false
             })  
             event.target.className = "ui button negative disabled"  
