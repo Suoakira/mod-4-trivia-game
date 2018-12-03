@@ -16,13 +16,23 @@ const MUSIC = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&
 const MYTHOLOGY = "https://opentdb.com/api.php?amount=1&category=20&difficulty=easy&type=multiple"
 
 export default class index extends Component {
-  state = {
-    users: [],
-    scores: [],
-    quizQuestions: [],
-    userPoints: 1000,
-    catchPhrase: false
+
+  constructor(props) {
+    super(props)
+
+    this.answerArray = ['london', 'milan']
+  
+    this.state = {
+      users: [],
+      scores: [],
+      correctAnswer: '',
+      quizQuestions: [],
+      userPoints: 1000,
+      catchPhrase: false
+    }
   }
+  
+
   // removes quotes from questions
   iterate = (genre) => {
   
@@ -52,6 +62,14 @@ export default class index extends Component {
       
     }
 
+    shuffleAnswer = (a) => {
+      for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a[0];
+  }
+
     currentPoints = () =>
       this.state.userPoints
 
@@ -67,6 +85,8 @@ export default class index extends Component {
     const geography = await this.fetchData(GEOGRAPHY)
     const music = await this.fetchData(MUSIC)
     const mythology = await this.fetchData(MYTHOLOGY)
+
+    this.setState({correctAnswer: this.shuffleAnswer(this.answerArray)})
 
     this.setState({
       users: [...data],
@@ -92,11 +112,18 @@ render() {
   
 
   const { handleTileClick, questionPoints, currentPoints } = this
+  const { correctAnswer, quizQuestions } = this.state
   return (
     <div>
     <NavBar />
 
-      <GameArea quizQuestions={this.state.quizQuestions} handleTileClick={handleTileClick} questionPoints={questionPoints} currentPoints={currentPoints} />
+      <GameArea 
+        quizQuestions={quizQuestions} 
+        handleTileClick={handleTileClick} 
+        questionPoints={questionPoints} 
+        currentPoints={currentPoints} 
+         correctAnswer={correctAnswer} 
+        />
       
 
     </div>

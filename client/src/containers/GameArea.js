@@ -10,16 +10,39 @@ import { Button, Progress } from 'semantic-ui-react'
 
 export default class GameArea extends Component {
   
-  state = {}
+ constructor(props) {
+   super(props)
+   
+   this.city = ''
+   this.state = {}
+ }
+ 
 
 
+  changeGameImage = selectedCity => {
+    switch (selectedCity) {
+      case 'london':
+      this.city = 'game-img-1'
+      break
+      default: 
+      this.city = 'game-img-default'
+    }
+  }
 
+
+  componentDidMount = () => {
+  }
+  
+  
+  
+  
   quizQuestionsMap = (questions, handleClick) =>
-    questions.map(question => <GameTile question={question} handleTileClick={handleClick} points={this.props.questionPoints} />)
-
-
+  questions.map(question => <GameTile question={question} handleTileClick={handleClick} points={this.props.questionPoints} />)
+  
+  
   render() {
-    const { quizQuestions, handleTileClick, currentPoints } = this.props
+    this.changeGameImage(this.props.correctAnswer)
+    const { quizQuestions, handleTileClick, currentPoints, correctAnswer } = this.props
 
     return (
 
@@ -33,12 +56,21 @@ export default class GameArea extends Component {
         <Grid.Column width={12}>
         
       <div className="game-image-form">
-        <GameImageGuess />
+        <GameImageGuess correctAnswer={correctAnswer}/>
       </div>
 
 
+
+
+
+
         {/* could flip css class w/ pic via function */}
-      <div className="game-area-img">
+      <div className={this.city}>
+
+
+
+
+
         <div className="ui three column grid">
         <div className="column">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[0]}
