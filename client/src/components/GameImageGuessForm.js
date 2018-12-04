@@ -1,16 +1,23 @@
 import React, { Component } from 'react'
-import { Form } from 'semantic-ui-react'
+import { Button, Modal, Form } from 'semantic-ui-react'
 export default class GameImageGuessForm extends Component {
+
     state = {
         userInput: '',
         showOutcome: false,
-        correctness: undefined
+        correctness: undefined,
+        toggleFalseModal: true
+
     }
+
 
     userGuess = userInput => {
         // this.setState({showOutcome: true})
         if (userInput === this.props.correctAnswer) {
+            // place holder toggle for app, if they get the correct answer render the leader bored
+            this.props.toggleCatchPhrase()
             console.log('Correct!');
+
             // this.setState({correctness: true})
 
         } else {
@@ -19,7 +26,6 @@ export default class GameImageGuessForm extends Component {
             //Next turn
         }
     }
-
 
     handleChange = event => {
         this.setState({
@@ -32,8 +38,15 @@ export default class GameImageGuessForm extends Component {
     }
 
 
+
+
+
+
+
+
   render() {
-      const { handleChange, handleSubmit } = this
+      const { toggleFalseModal } = this.state
+      const { handleChange, handleSubmit, close } = this
     return (
         <div>
   
@@ -46,7 +59,6 @@ export default class GameImageGuessForm extends Component {
   </Form>
   {/* {this.state.showOutcome && <div>{this.state.correctness ? 'CORRECT' : 'INCORRECT'}</div>} */}
 
-    </div>
     )
   }
 }

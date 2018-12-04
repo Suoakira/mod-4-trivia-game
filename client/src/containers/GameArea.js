@@ -58,7 +58,9 @@ export default class GameArea extends Component {
   
   render() {
     this.changeGameImage(this.props.correctAnswer)
-    const { quizQuestions, handleTileClick, currentPoints, correctAnswer, currentUser } = this.props
+
+    const { quizQuestions, handleTileClick, currentPoints, correctAnswer, catchPhrase, toggleCatchPhrase, currentUser } = this.props
+
 
     return (
 
@@ -75,23 +77,21 @@ export default class GameArea extends Component {
           null
           :
       <div className="game-image-form">
-                  <GameImageGuessForm correctAnswer={correctAnswer} points={this.props.questionPoints} toggleForm={this.toggleForm} disableAllButtons={this.disableAllButtons} />
+                  <GameImageGuessForm 
+                   correctAnswer={correctAnswer}
+                   points={this.props.questionPoints} 
+                   toggleForm={this.toggleForm} 
+                   disableAllButtons={this.disableAllButtons} 
+                   catchPhrase={catchPhrase}
+                   toggleCatchPhrase={toggleCatchPhrase}
+                   />
       </div>
 
         }
 
-
-
-
-
-
         {/* could flip css class w/ pic via function */}
       {/* <div style={{ backgroundImage: `url(https://placeimg.com/800/600/${this.props.correctAnswer}?id=1)` }} className={this.city}> */}
       <div className={this.city}>
-
-
-
-
 
         <div className="ui three column grid">
         <div className="column">

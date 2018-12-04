@@ -15,6 +15,7 @@ const MATH = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&t
 const GEOGRAPHY = "https://opentdb.com/api.php?amount=1&category=22&difficulty=easy"
 const MUSIC = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=multiple"
 const MYTHOLOGY = "https://opentdb.com/api.php?amount=1&category=20&difficulty=easy&type=multiple"
+const sanitizer = require('sanitizer');
 
 export default class index extends Component {
 
@@ -22,6 +23,7 @@ export default class index extends Component {
     super(props)
 
     this.answerArray = ['london', 'milan']
+
 
     // this.answerImageMap = {
     //   'london': 4,
@@ -38,6 +40,7 @@ export default class index extends Component {
       currentUser: window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : null
     }
   }
+
   
   getCurrentUser = currentUser => {
       this.setState({
@@ -48,20 +51,44 @@ export default class index extends Component {
   }
   
 
-  // removes quotes from questions
-  iterate = (genre) => {
-  
-    genre.results[0].question.replace(/&quot;/g, '"')
-    genre.results[0].correct_answer.replace(/&quot;/g, '"')
-    genre.results[0].incorrect_answers[0].replace(/&quot;/g, '"')
-    genre.results[0].incorrect_answers[1].replace(/&quot;/g, '"')
-    genre.results[0].incorrect_answers[2].replace(/&quot;/g, '"')
+  iterate = () => {
+    console.log(this.state.quizQuestions)
 
+    const questions = [...this.state.quizQuestions]
+    console.log(questions.question)
+    // most important regex 
+    // questions.map(question => question.question.replace(/(&#039;)|(&quot;)/g, '"'))
+    questions.map(question => question.question.replace(/(&quot;)/g, '"'))
+    console.log(questions)
+   
+    // sanitizer.escape(question[0].question)
+    // sanitizer.escape(question[0].correct_answer)
+    // sanitizer.escape(question[0].incorrect_answers[0])
+    // sanitizer.escape(question[0].incorrect_answers[1])
+    // sanitizer.escape(question[0].incorrect_answers[2])
+    // questions[0].question.replace(/&quot;/g, '"')
+    // genre.results[0].correct_answer.replace(/&quot;/g, '"')
+    // genre.results[0].incorrect_answers[0].replace(/&quot;/g, '"')
+    // genre.results[0].incorrect_answers[1].replace(/&quot;/g, '"')
+    // genre.results[0].incorrect_answers[2].replace(/&quot;/g, '"')
+    this.setState({
+      quizQuestions: questions
+    })
   }
 
+  toggleCatchPhrase = () =>
+    this.setState({ catchPhrase: !this.state.catchPhrase})
+  
   fetchData = async (url) => {
-    return await fetch(url)
+    
+    let resp = await fetch(url)
       .then(resp => resp.json())
+    
+
+      // this.iterate(resp)
+
+    return resp
+
   }
 
   questionPoints = (answer) => {
@@ -78,12 +105,11 @@ export default class index extends Component {
         return this.state.userPoints[0]
     }
       else if (answer === "notcatchphrase" ) {
-          this.setState({
-            userPoints: [this.state.userPoints[0], this.state.userPoints[1] - 100]
-          })
-          return this.state.userPoints[0]
-        }
-          
+      this.setState({
+        userPoints: [this.state.userPoints[0], this.state.userPoints[1] - 100]
+      })
+      return this.state.userPoints[0]
+        }  
     }
 
     shuffleAnswer = (a) => {
@@ -100,7 +126,6 @@ export default class index extends Component {
 
   async componentDidMount() {
 
-
     const data = await this.fetchData(API)
     
     const film = await this.fetchData(FILM)
@@ -113,30 +138,27 @@ export default class index extends Component {
     const music = await this.fetchData(MUSIC)
     const mythology = await this.fetchData(MYTHOLOGY)
 
+
     this.setState({correctAnswer: this.shuffleAnswer(this.answerArray)})
     // this.setState({imageId: this.answerImageMap[this.state.correctAnswer]})
-
+    
     this.setState({
+      correctAnswer: this.shuffleAnswer(this.answerArray),
       users: [...data],
       quizQuestions: [film.results[0], games.results[0], tv.results[0], sports.results[0], general.results[0], math.results[0], geography.results[0], music.results[0], mythology.results[0]]
-    })
+    }, () => {
+      this.iterate()
+    }) 
+    
+    
   }
-
-  // work in progress
-  // parseLocalState = () => {
-  //   const copyQuizQuestions = [...this.state.quizQuestions]
-  //   copyQuizQuestions.map(question => this.iterate(question))
-  //   this.setState({quizQuestions: copyQuizQuestions})
-  // }
-
 
   
 render() {
-
   
+  const { handleTileClick, questionPoints, currentPoints, toggleCatchPhrase, getCurrentUser } = this
+  const { correctAnswer, quizQuestions, catchPhrase } = this.state
 
-  const { handleTileClick, questionPoints, currentPoints, getCurrentUser } = this
-  const { correctAnswer, quizQuestions, currentUser } = this.state
   return (
     <div>
     <NavBar />
@@ -146,8 +168,11 @@ render() {
         handleTileClick={handleTileClick} 
         questionPoints={questionPoints} 
         currentPoints={currentPoints} 
-        correctAnswer={correctAnswer} 
-        currentUser={ currentUser }
+
+        correctAnswer={correctAnswer}
+        catchPhrase={catchPhrase}
+        toggleCatchPhrase={toggleCatchPhrase}
+
         />
       
 
