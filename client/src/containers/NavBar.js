@@ -28,7 +28,11 @@ export default class MenuExampleSizeMini extends Component {
           </Dropdown>
 
           <Menu.Item>
+            {this.props.currentUser ?
+            <Button primary>{this.props.currentUser.username}</Button>
+            :
             <Button primary>Sign Up</Button>
+            }
           </Menu.Item>
         </Menu.Menu>
       </Menu>

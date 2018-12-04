@@ -8,13 +8,15 @@ renderComments = () =>
 this.props.userComments.map(commentObj => <CommentCard commentObj={commentObj} />)
 
 
+
+
 render() {
     // console.log(this.state.userComments.map(c => c))
         return (
             <div className="comment-area">
                 <span>Comments</span>
                 {this.renderComments()}
-                <p>Yooo</p>
+    
             </div>
         )
    }

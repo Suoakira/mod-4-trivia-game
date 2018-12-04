@@ -58,7 +58,7 @@ export default class CommentForm extends Component {
             <label></label>
             <input value={this.state.userComment} fluid label="Name" placeholder="Comment" name="userComment" onChange={handleChange}/>
           </Form.Field>
-          <Button content='Add Reply' labelPosition='left' icon='edit' primary />
+          <Button content='Add Comment' labelPosition='left' icon='edit' primary />
         </Form>
         
       </div>

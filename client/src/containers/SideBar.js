@@ -20,9 +20,12 @@ export default class SideBar extends Component {
   }
 
   addComment = comment => {
-    const copyArray = [...this.state.userComments]
-    this.setState({userComments: copyArray.push(comment)})
+    // const copyArray = [...this.state.userComments]
+    this.setState({userComments: [...this.state.userComments, comment]})
   }
+
+
+  
 
 
   render() {
