@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './containers/NavBar';
 import GameArea from './containers/GameArea'
 import SignUp from './components/SignUp'
+import Leaderboard from './components/Leaderboard';
 
 const API = 'http://localhost:3000/api/v1/users/'
 const FILM = "https://opentdb.com/api.php?amount=1&category=11&difficulty=easy&type=multiple"
@@ -15,6 +16,7 @@ const MATH = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&t
 const GEOGRAPHY = "https://opentdb.com/api.php?amount=1&category=22&difficulty=easy"
 const MUSIC = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=multiple"
 const MYTHOLOGY = "https://opentdb.com/api.php?amount=1&category=20&difficulty=easy&type=multiple"
+
 
 export default class index extends Component {
 
@@ -58,7 +60,14 @@ export default class index extends Component {
     console.log(questions.question)
     // most important regex 
     // questions.map(question => question.question.replace(/(&#039;)|(&quot;)/g, '"'))
-    questions.map(question => question.question.replace(/(&quot;)/g, '"'))
+    var decodeHTML = function (html) {
+      var txt = document.createElement('textarea');
+      txt.innerHTML = html
+      return txt.value
+    }
+    questions.map(question => {
+      question.question = decodeHTML(question.question)
+    })
     console.log(questions)
    
     // sanitizer.escape(question[0].question)
@@ -79,17 +88,7 @@ export default class index extends Component {
   toggleCatchPhrase = () =>
     this.setState({ catchPhrase: !this.state.catchPhrase})
   
-  fetchData = async (url) => {
-    
-    let resp = await fetch(url)
-      .then(resp => resp.json())
-    
 
-      // this.iterate(resp)
-
-    return resp
-
-  }
 
   questionPoints = (answer) => {
       if (answer === "correct" ) {
@@ -123,11 +122,20 @@ export default class index extends Component {
     currentPoints = () =>
       this.state.userPoints
 
+  fetchData = async (url) => {
+
+    let resp = await fetch(url)
+      .then(resp => resp.json())
+    // this.iterate(resp)
+    return resp
+  }
+
 
   async componentDidMount() {
 
     const data = await this.fetchData(API)
-    
+
+
     const film = await this.fetchData(FILM)
     const games = await this.fetchData(GAMES)
     const tv = await this.fetchData(TV)
@@ -157,13 +165,15 @@ export default class index extends Component {
 render() {
   
   const { handleTileClick, questionPoints, currentPoints, toggleCatchPhrase, getCurrentUser } = this
-  const { correctAnswer, quizQuestions, catchPhrase, currentUser } = this.state
+  const { correctAnswer, quizQuestions, catchPhrase, currentUser, users  } = this.state
 
   return (
     <div>
-    <NavBar />
+    <NavBar currentUser={currentUser} />
       {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
-      <SignUp getCurrentUser={getCurrentUser} />
+      {/* <SignUp getCurrentUser={getCurrentUser} /> */}
+      <Leaderboard users={users} />
+
       <GameArea 
         quizQuestions={quizQuestions} 
         handleTileClick={handleTileClick} 
