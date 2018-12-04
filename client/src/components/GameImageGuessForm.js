@@ -14,7 +14,6 @@ export default class GameImageGuessForm extends Component {
             this.props.points("notcatchphrase")
             this.props.toggleForm()
             this.props.disableAllButtons()
-
         }
     }
 
@@ -33,10 +32,11 @@ export default class GameImageGuessForm extends Component {
   render() {
       const { handleChange, handleSubmit } = this
     return (
+
         <div> 
             <Form onSubmit={handleSubmit}>
                 <Form.Field>
-                <label>Enter you guess</label>
+                <label>Enter your guess</label>
                 <input value={this.state.name} fluid label="Name" placeholder="You got this..." name="userInput" onChange={handleChange}/>
                 </Form.Field>
                 <Form.Button>Submit</Form.Button>

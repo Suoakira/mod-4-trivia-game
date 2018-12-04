@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './containers/NavBar';
 import GameArea from './containers/GameArea'
+import SignUp from './components/SignUp'
 
 const API = 'http://localhost:3000/api/v1/users/'
 const FILM = "https://opentdb.com/api.php?amount=1&category=11&difficulty=easy&type=multiple"
@@ -28,7 +29,8 @@ export default class index extends Component {
       correctAnswer: '',
       quizQuestions: [],
       userPoints: [1000, 1000],
-      catchPhrase: false
+      catchPhrase: false,
+      currentUser: 11
     }
   }
   
@@ -82,7 +84,11 @@ export default class index extends Component {
     currentPoints = () =>
       this.state.userPoints
 
+
+
   async componentDidMount() {
+
+
     const data = await this.fetchData(API)
     
     const film = await this.fetchData(FILM)
@@ -110,10 +116,6 @@ export default class index extends Component {
   //   this.setState({quizQuestions: copyQuizQuestions})
   // }
 
-  // currently unused tile click handler 
-  // handleTileClick = (question) =>
-  //   console.log("clicked")
-  
 
   
 render() {
@@ -121,17 +123,18 @@ render() {
   
 
   const { handleTileClick, questionPoints, currentPoints } = this
-  const { correctAnswer, quizQuestions } = this.state
+  const { correctAnswer, quizQuestions, currentUser } = this.state
   return (
     <div>
     <NavBar />
-
+      <SignUp />
       <GameArea 
         quizQuestions={quizQuestions} 
         handleTileClick={handleTileClick} 
         questionPoints={questionPoints} 
         currentPoints={currentPoints} 
-         correctAnswer={correctAnswer} 
+        correctAnswer={correctAnswer} 
+        currentUser={ currentUser }
         />
       
 

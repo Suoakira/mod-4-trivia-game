@@ -45,6 +45,21 @@ code {
   margin: 2em;
 }
 
+
+/* style="background-image: url(https://placeimg.com/800/600/arch) */
+
+/* Comment Form */
+.comment-submit {
+  /* text-align: center; */
+}
+
+
+/* Sign Up Form */
+.sign-up-form {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
 /* gameTileButtonSelectButton */
 #questionSelect {
   height: 200px;
@@ -53,3 +68,4 @@ code {
 }
 
 /* style="background-image: url(https://placeimg.com/800/600/arch) */
+
