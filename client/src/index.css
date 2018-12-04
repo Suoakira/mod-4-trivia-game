@@ -46,3 +46,15 @@ code {
 }
 
 /* style="background-image: url(https://placeimg.com/800/600/arch) */
+
+/* Comment Form */
+.comment-submit {
+  /* text-align: center; */
+}
+
+
+/* Sign Up Form */
+.sign-up-form {
+  text-align: center;
+  margin-bottom: 1em;
+}

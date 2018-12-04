@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Grid, Image, Sidebar } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import GameTile from "../components/GameTile"
 import SideBar from '../containers/SideBar'
 import GameImageGuessForm from '../components/GameImageGuessForm'
 
 
-import { Button, Progress } from 'semantic-ui-react'
 
 
 export default class GameArea extends Component {
@@ -14,7 +13,8 @@ export default class GameArea extends Component {
    super(props)
    
    this.city = ''
-   this.state = {}
+   this.state = {
+   }
  }
  
 
@@ -42,7 +42,7 @@ export default class GameArea extends Component {
   
   render() {
     this.changeGameImage(this.props.correctAnswer)
-    const { quizQuestions, handleTileClick, currentPoints, correctAnswer } = this.props
+    const { quizQuestions, handleTileClick, currentPoints, correctAnswer, currentUser } = this.props
 
     return (
 
@@ -117,7 +117,7 @@ export default class GameArea extends Component {
   </Grid.Column>
 
         <Grid.Column width={4}>
-          <SideBar currentPoints={currentPoints}/>
+          <SideBar currentPoints={ currentPoints } currentUser={ currentUser } />
         </Grid.Column>
 
 
