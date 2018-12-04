@@ -28,7 +28,7 @@ export default class index extends Component {
       scores: [],
       correctAnswer: '',
       quizQuestions: [],
-      userPoints: 1000,
+      userPoints: [1000, 1000],
       catchPhrase: false,
       currentUser: 11
     }
@@ -52,16 +52,25 @@ export default class index extends Component {
   }
 
   questionPoints = (answer) => {
-      if (answer === "correct" ) 
+      if (answer === "correct" ) {
       this.setState({
-        userPoints: this.state.userPoints + 50
+        userPoints: [this.state.userPoints[0] + 50, this.state.userPoints[1]]
       })
-      else if (answer === "incorrect")
+        return this.state.userPoints[0]
+    }
+      else if (answer === "incorrect") {
       this.setState({
-        userPoints: this.state.userPoints - 50
+        userPoints: [this.state.userPoints[0] - 50, this.state.userPoints[1]]
       })
-      return this.state.userPoints
-      
+        return this.state.userPoints[0]
+    }
+      else if (answer === "notcatchphrase" ) {
+          this.setState({
+            userPoints: [this.state.userPoints[0], this.state.userPoints[1] - 100]
+          })
+          return this.state.userPoints[0]
+        }
+          
     }
 
     shuffleAnswer = (a) => {
@@ -107,10 +116,6 @@ export default class index extends Component {
   //   this.setState({quizQuestions: copyQuizQuestions})
   // }
 
-  // currently unused tile click handler 
-  // handleTileClick = (question) =>
-  //   console.log("clicked")
-  
 
   
 render() {

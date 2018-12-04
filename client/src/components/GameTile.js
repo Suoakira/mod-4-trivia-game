@@ -15,6 +15,7 @@ class GameTile extends Component {
             this.props.question.incorrect_answers[2],
             this.props.question.correct_answer])
         this.remainingPoints = 0
+        
 
         this.defaultSettings = {
             questionCategory: this.props.question.category,
@@ -29,7 +30,8 @@ class GameTile extends Component {
             correctAnswerGiven: false,
             buttonClass: "ui button primary",
             displayTile: false,
-            answerSubmit: true
+            answerSubmit: true,
+
         }
         this.state = {}
         }
@@ -37,18 +39,22 @@ class GameTile extends Component {
     // ====================== close an open Modal=======================================
 
     close = () =>
-        this.setState( this.defaultSettings,
+        this.setState( this.defaultSettings
             )
 
     open = () =>
         this.setState({ showModal: true })
 
 
-    correctClose = () => 
+    correctClose = () => {
         this.setState({ 
             displayTile: true,
             correctAnswerGiven: true
          })
+        this.props.toggleForm()
+        this.props.disableAllButtons()
+
+    }
     
     
 
@@ -142,15 +148,17 @@ class GameTile extends Component {
         <div>
             {
             this.state.displayTile ?
-
             null
             :
-            <div className="quiz-box">
-                <button onClick={() => this.open()}>
-                    <div className="quiz-box">
+                    <div>
+                        <div className="quiz-box">
+
+                            <button id="questionSelect" onClick={() => this.open()}>
+                    
                         {questionCategory}
-                    </div>
-                </button>
+                
+                        </button>
+                </div>
                 
                 <Modal
                     closeOnDimmerClick={false} 

@@ -5,10 +5,10 @@ const PlayerArea = (props) => (
   <Grid stackable columns={1}>
     <Grid.Column>
       <Segment>
-        Catchphrase Worth: {props.currentPoints()}
+        Catchphrase Worth: {props.currentPoints()[1]}
       </Segment>
       <Segment>
-        Points: {props.currentPoints()}
+        Points: {props.currentPoints()[0]}
       </Segment>
     </Grid.Column>
   </Grid>

@@ -14,6 +14,7 @@ export default class GameArea extends Component {
    
    this.city = ''
    this.state = {
+     toggleForm: true
    }
  }
  
@@ -29,15 +30,30 @@ export default class GameArea extends Component {
     }
   }
 
+  toggleForm = () =>
+    this.setState({
+        toggleForm: !this.state.toggleForm
+    })
+
 
   componentDidMount = () => {
+  }
+
+  disableAllButtons = () => {
+    if (this.state.toggleForm === true) {
+      const quizButtons = document.querySelectorAll("#questionSelect")
+      quizButtons.forEach(button => button.className = "ui button disabled")
+    } else if (this.state.toggleForm === false) {
+      const quizButtons = document.querySelectorAll("#questionSelect")
+      quizButtons.forEach(button => button.className = "")
+    }
   }
   
   
   
   
   quizQuestionsMap = (questions, handleClick) =>
-  questions.map(question => <GameTile question={question} handleTileClick={handleClick} points={this.props.questionPoints} />)
+    questions.map(question => <GameTile question={question} handleTileClick={handleClick} points={this.props.questionPoints} toggleForm={this.toggleForm} disableAllButtons={this.disableAllButtons} />)
   
   
   render() {
@@ -54,10 +70,15 @@ export default class GameArea extends Component {
     
         {/* main body */}
         <Grid.Column width={12}>
-        
+        {
+          this.state.toggleForm ?
+          null
+          :
       <div className="game-image-form">
-        <GameImageGuessForm correctAnswer={correctAnswer}/>
+                  <GameImageGuessForm correctAnswer={correctAnswer} points={this.props.questionPoints} toggleForm={this.toggleForm} disableAllButtons={this.disableAllButtons} />
       </div>
+
+        }
 
 
 
