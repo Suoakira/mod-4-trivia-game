@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import CommentForm from './CommentForm'
+import Comments from './Comments'
 
  export default class ChatArea extends Component {
 
@@ -9,7 +10,7 @@ import CommentForm from './CommentForm'
 
 
     fetchComments = () => {
-        fetch(`http://localhost:3000/api/v1/users/`)
+        fetch(`http://localhost:3000/api/v1/comments/`)
         .then(resp => resp.json())
         .then(data => this.setState({userComments: data}))
       }
@@ -18,19 +19,16 @@ import CommentForm from './CommentForm'
     this.fetchComments()
     }
 
-    getCurrentUserComments = () => {
-        this.state.comments.filter(user => this.props.currentUser === user)
-    }
+    renderComments = () => 
+        this.state.userComments.map(comments => <Comments comments={comments} />)
+    
 
    render() { 
-       const { userComments } = this.state
+    // console.log(this.state.userComments.map(c => c.comment))
         return (
-            <div>
-                <p>
-                {
-                    console.log(userComments)
-                }
-                </p>
+            <div className="comment-area">
+                <span>Comments</span>
+                {/* <Comments /> */}
             </div>
         )
    }
