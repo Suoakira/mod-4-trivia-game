@@ -30,8 +30,15 @@ export default class index extends Component {
       quizQuestions: [],
       userPoints: [1000, 1000],
       catchPhrase: false,
-      currentUser: 11
+      currentUser: null
     }
+  }
+  
+  getCurrentUser = currentUser => {
+      this.setState({
+          currentUser
+      })
+      console.log(this.state.currentUser)
   }
   
 
@@ -85,7 +92,6 @@ export default class index extends Component {
       this.state.userPoints
 
 
-
   async componentDidMount() {
 
 
@@ -122,12 +128,12 @@ render() {
 
   
 
-  const { handleTileClick, questionPoints, currentPoints } = this
+  const { handleTileClick, questionPoints, currentPoints, getCurrentUser } = this
   const { correctAnswer, quizQuestions, currentUser } = this.state
   return (
     <div>
     <NavBar />
-      <SignUp />
+      <SignUp getCurrentUser={getCurrentUser} />
       <GameArea 
         quizQuestions={quizQuestions} 
         handleTileClick={handleTileClick} 
