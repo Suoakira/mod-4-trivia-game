@@ -46,11 +46,12 @@ export default class GameImageGuessForm extends Component {
       const { toggleFalseModal } = this.state
       const { handleChange, handleSubmit, close } = this
     return (
+
         <div>
 
             <Form onSubmit={handleSubmit}>
                 <Form.Field>
-                <label>Enter you guess</label>
+                <label>Enter your guess</label>
                 <input value={this.state.name} fluid label="Name" placeholder="You got this..." name="userInput" onChange={handleChange}/>
                 </Form.Field>
                 <Form.Button>Submit</Form.Button>

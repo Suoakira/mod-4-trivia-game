@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Progress, Modal, Button } from 'semantic-ui-react'
+import { Progress } from 'semantic-ui-react'
 
 
 class Timer extends Component {

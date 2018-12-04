@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './containers/NavBar';
 import GameArea from './containers/GameArea'
+import SignUp from './components/SignUp'
 
 const API = 'http://localhost:3000/api/v1/users/'
 const FILM = "https://opentdb.com/api.php?amount=1&category=11&difficulty=easy&type=multiple"
@@ -28,9 +29,19 @@ export default class index extends Component {
       correctAnswer: '',
       quizQuestions: [],
       userPoints: [1000, 1000],
-      catchPhrase: false
+      catchPhrase: false,
+      currentUser: null
     }
   }
+
+  
+  getCurrentUser = currentUser => {
+      this.setState({
+          currentUser
+      })
+      console.log(this.state.currentUser)
+  }
+  
 
   iterate = () => {
     console.log(this.state.quizQuestions)
@@ -104,8 +115,9 @@ export default class index extends Component {
     currentPoints = () =>
       this.state.userPoints
 
+
   async componentDidMount() {
-    
+
     const data = await this.fetchData(API)
     
     const film = await this.fetchData(FILM)
@@ -129,29 +141,26 @@ export default class index extends Component {
     
   }
 
-  // work in progress
-  parseLocalState = () => {
-    const copyQuizQuestions = [...this.state.quizQuestions]
-    copyQuizQuestions.map(question => this.iterate(question))
-    this.setState({quizQuestions: copyQuizQuestions})
-  }
   
 render() {
   
-  const { handleTileClick, questionPoints, currentPoints, toggleCatchPhrase } = this
+  const { handleTileClick, questionPoints, currentPoints, toggleCatchPhrase, getCurrentUser } = this
   const { correctAnswer, quizQuestions, catchPhrase } = this.state
+
   return (
     <div>
     <NavBar />
-
+      <SignUp getCurrentUser={getCurrentUser} />
       <GameArea 
         quizQuestions={quizQuestions} 
         handleTileClick={handleTileClick} 
         questionPoints={questionPoints} 
         currentPoints={currentPoints} 
+
         correctAnswer={correctAnswer}
         catchPhrase={catchPhrase}
         toggleCatchPhrase={toggleCatchPhrase}
+
         />
       
 

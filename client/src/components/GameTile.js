@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Timer from './Timer'
-import { Button, Header, Image, Modal, Icon, Progress } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 
 // import Popup from "reactjs-popup"
     
