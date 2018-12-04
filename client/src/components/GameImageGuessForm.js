@@ -2,18 +2,21 @@ import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
 export default class GameImageGuessForm extends Component {
     state = {
-        userInput: ''
+        userInput: '',
+        showOutcome: false,
+        correctness: undefined
     }
 
     userGuess = userInput => {
+        // this.setState({showOutcome: true})
         if (userInput === this.props.correctAnswer) {
             console.log('Correct!');
-            
+            // this.setState({correctness: true})
+
         } else {
             console.log('Wrong');
-            this.props.points("notcatchphrase")
-            this.props.toggleForm()
-            this.props.disableAllButtons()
+            //Deduct points
+            //Next turn
         }
     }
 
@@ -32,16 +35,18 @@ export default class GameImageGuessForm extends Component {
   render() {
       const { handleChange, handleSubmit } = this
     return (
+        <div>
+  
+  <Form onSubmit={handleSubmit}>
+    <Form.Field>
+      <label>Enter you guess</label>
+      <input value={this.state.userInput} fluid label="Name" placeholder="You got this..." name="userInput" onChange={handleChange}/>
+    </Form.Field>
+    <Form.Button>Submit</Form.Button>
+  </Form>
+  {/* {this.state.showOutcome && <div>{this.state.correctness ? 'CORRECT' : 'INCORRECT'}</div>} */}
 
-        <div> 
-            <Form onSubmit={handleSubmit}>
-                <Form.Field>
-                <label>Enter your guess</label>
-                <input value={this.state.name} fluid label="Name" placeholder="You got this..." name="userInput" onChange={handleChange}/>
-                </Form.Field>
-                <Form.Button>Submit</Form.Button>
-            </Form>
-        </div>
+    </div>
     )
   }
 }

@@ -86,6 +86,7 @@ export default class GameArea extends Component {
 
 
         {/* could flip css class w/ pic via function */}
+      {/* <div style={{ backgroundImage: `url(https://placeimg.com/800/600/${this.props.correctAnswer}?id=1)` }} className={this.city}> */}
       <div className={this.city}>
 
 

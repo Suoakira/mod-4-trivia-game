@@ -22,6 +22,11 @@ export default class index extends Component {
     super(props)
 
     this.answerArray = ['london', 'milan']
+
+    // this.answerImageMap = {
+    //   'london': 4,
+    //   'milan': 3
+    // }
   
     this.state = {
       users: [],
@@ -30,7 +35,7 @@ export default class index extends Component {
       quizQuestions: [],
       userPoints: [1000, 1000],
       catchPhrase: false,
-      currentUser: null
+      currentUser: window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : null
     }
   }
   
@@ -38,6 +43,7 @@ export default class index extends Component {
       this.setState({
           currentUser
       })
+      // window.localStorage.setItem('user', JSON.stringify(currentUser))
       console.log(this.state.currentUser)
   }
   
@@ -108,6 +114,7 @@ export default class index extends Component {
     const mythology = await this.fetchData(MYTHOLOGY)
 
     this.setState({correctAnswer: this.shuffleAnswer(this.answerArray)})
+    // this.setState({imageId: this.answerImageMap[this.state.correctAnswer]})
 
     this.setState({
       users: [...data],
@@ -133,7 +140,7 @@ render() {
   return (
     <div>
     <NavBar />
-      <SignUp getCurrentUser={getCurrentUser} />
+      {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
       <GameArea 
         quizQuestions={quizQuestions} 
         handleTileClick={handleTileClick} 
