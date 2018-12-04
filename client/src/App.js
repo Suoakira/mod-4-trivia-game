@@ -15,7 +15,6 @@ const MATH = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&t
 const GEOGRAPHY = "https://opentdb.com/api.php?amount=1&category=22&difficulty=easy"
 const MUSIC = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=multiple"
 const MYTHOLOGY = "https://opentdb.com/api.php?amount=1&category=20&difficulty=easy&type=multiple"
-const sanitizer = require('sanitizer');
 
 export default class index extends Component {
 
@@ -37,7 +36,8 @@ export default class index extends Component {
       quizQuestions: [],
       userPoints: [1000, 1000],
       catchPhrase: false,
-      currentUser: window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : null
+      // currentUser: window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : null
+      currentUser: null
     }
   }
 
@@ -157,22 +157,22 @@ export default class index extends Component {
 render() {
   
   const { handleTileClick, questionPoints, currentPoints, toggleCatchPhrase, getCurrentUser } = this
-  const { correctAnswer, quizQuestions, catchPhrase } = this.state
+  const { correctAnswer, quizQuestions, catchPhrase, currentUser } = this.state
 
   return (
     <div>
     <NavBar />
       {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
+      <SignUp getCurrentUser={getCurrentUser} />
       <GameArea 
         quizQuestions={quizQuestions} 
         handleTileClick={handleTileClick} 
         questionPoints={questionPoints} 
         currentPoints={currentPoints} 
-
         correctAnswer={correctAnswer}
         catchPhrase={catchPhrase}
         toggleCatchPhrase={toggleCatchPhrase}
-
+        currentUser={currentUser}
         />
       
 

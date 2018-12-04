@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Modal, Image, Header } from 'semantic-ui-react'
+import { Form, Modal, Header } from 'semantic-ui-react'
 
 class SignUp extends Component {
   state = {
