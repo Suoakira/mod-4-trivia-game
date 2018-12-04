@@ -4,7 +4,7 @@ import { Form, Button, Modal, Image, Header } from 'semantic-ui-react'
 class SignUp extends Component {
   state = {
     username: '',
-    modal: true
+    modal: true,
   }
 
 
@@ -17,8 +17,11 @@ class SignUp extends Component {
       },
       body: JSON.stringify({ username: this.state.username })
     })
+    .then(resp => resp.json())
+    .then(data => this.props.getCurrentUser(data))
     this.resetForm()
     console.log('clicked')
+    this.handleClose()
   }
 
   handleChange = event => {
@@ -47,7 +50,7 @@ class SignUp extends Component {
             <Header></Header>
               <Form onSubmit={handleSubmit}>
                 <Form.Input className='sign-up-form' placeholder='Name' name='username' value={name} onChange={handleChange} />
-                <Form.Button className='sign-up-form button' content='Submit' onClick={handleClose} />
+                <Form.Button>Submit</Form.Button>
               </Form>
           </Modal.Description>
         </Modal.Content>

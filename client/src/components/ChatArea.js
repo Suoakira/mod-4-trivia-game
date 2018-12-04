@@ -4,14 +4,14 @@ import CommentForm from './CommentForm'
  export default class ChatArea extends Component {
 
     state = {
-        comments: []
+        userComments: []
     }
 
 
     fetchComments = () => {
         fetch(`http://localhost:3000/api/v1/users/`)
         .then(resp => resp.json())
-        .then(data => this.setState({comments: data}))
+        .then(data => this.setState({userComments: data}))
       }
     
     componentDidMount = () => {
@@ -23,12 +23,12 @@ import CommentForm from './CommentForm'
     }
 
    render() { 
-       const { comments } = this.state
+       const { userComments } = this.state
         return (
             <div>
                 <p>
                 {
-                    console.log(comments)
+                    console.log(userComments)
                 }
                 </p>
             </div>
