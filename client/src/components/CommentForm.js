@@ -17,7 +17,7 @@ export default class CommentForm extends Component {
 
     const newComment = {
         comment: this.state.userComment,
-        user_id: this.props.currentUser
+        user_id: this.props.currentUser.id
     }
 
     fetch(`http://localhost:3000/api/v1/comments`, {
@@ -27,6 +27,9 @@ export default class CommentForm extends Component {
       },
       body: JSON.stringify({ comment: newComment})
     })
+    .then(resp => resp.json())
+    .then(data => this.props.addComment(data))
+    
     this.resetForm()
   }
 
