@@ -38,7 +38,7 @@ class Leaderboard extends Component {
     
     renderLeaderboard = () => {
         const highScoresCopy = [...this.state.highScores]
-        return highScoresCopy.map(user => <LeaderboardRow leaderboardUser={user} />)
+        return highScoresCopy.map(user => <LeaderboardRow index={highScoresCopy.indexOf(user)} leaderboardUser={user} />)
     }
     
     
@@ -47,18 +47,19 @@ class Leaderboard extends Component {
         return (
             <div className="leaderboard-center" >
                 <Modal open={this.props.leaderboardOpen} closeOnDimmerClick={true}>
-                    <Modal.Header className='sign-up-form header'>Leaderboard</Modal.Header>
+                    <Modal.Header className='sign-up-form header'>High Scores</Modal.Header>
                         <Modal.Content >
                             <Table basic='very' celled collapsing>
                                 <Table.Header>
-                                    {
-                                    this.props.catchPhrase?
-                                        <h3 class="ui header">Congratulations You Won!</h3>
-                           
                                 
-                                    :
-                                    null
-                                    }
+                                    {
+                                     
+                                    this.props.catchPhrase?
+                                
+                                        <h3 class="ui header">Congratulations You Won!</h3>
+                                          :
+                                        null
+                                         }
                                     <Table.Row>
                                         <Table.HeaderCell>User</Table.HeaderCell>
                                         <Table.HeaderCell>Score</Table.HeaderCell>

@@ -115,7 +115,7 @@ class GameTile extends Component {
             this.setState({
 
                 questionCategory: "Incorrect -50 Points",
-                mainQuestion: "Try another topic if you're finding this one to hard!",
+                mainQuestion: "Incorrect -50 Points",
 
                 answerSubmit: false
             })  
@@ -171,7 +171,6 @@ class GameTile extends Component {
 
                     <Modal.Header className="question-header" >
                     {decodeHTML(mainQuestion)}
-                    {console.log(mainQuestion)}
                     </Modal.Header>
                         
                     <div>

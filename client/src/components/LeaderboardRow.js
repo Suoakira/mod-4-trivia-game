@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table, Header, Image, Modal } from 'semantic-ui-react'
+import index from '../App';
 
 export default function LeaderboardRow(props) {
   return (
@@ -7,11 +8,11 @@ export default function LeaderboardRow(props) {
 
         <Table.Row>
         <Table.Cell>
-          <Header as='h4' image>
-            <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' />
+          <Header as='h4'>
+              Rank {props.index + 1} :
             <Header.Content>
               {props.leaderboardUser.user.username}
-              <Header.Subheader>Human Resources</Header.Subheader>
+              <Header.Subheader>-------------</Header.Subheader>
             </Header.Content>
           </Header>
         </Table.Cell>
