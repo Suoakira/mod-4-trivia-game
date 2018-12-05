@@ -22,8 +22,14 @@ export default class GameArea extends Component {
 
   changeGameImage = selectedCity => {
     switch (selectedCity) {
-      case 'london':
+      case 'italy':
       this.city = 'game-img-1'
+      break
+      case 'australia':
+      this.city = 'game-img-2'
+      break
+      case 'india':
+      this.city = 'game-img-3'
       break
       default: 
       this.city = 'game-img-default'
