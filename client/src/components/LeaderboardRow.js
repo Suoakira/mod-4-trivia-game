@@ -3,7 +3,7 @@ import { Table, Header, Image, Modal } from 'semantic-ui-react'
 
 export default function LeaderboardRow(props) {
   return (
-    <div>
+    <div  className="leaderboard-row">
 
         <Table.Row>
         <Table.Cell>

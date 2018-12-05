@@ -2,7 +2,7 @@ import React from 'react'
 
  const GameImage = () => {
   return (
-    <div>
+    <div >
       <img src='https://placeimg.com/800/600/arch'></img>
     </div>
   )
