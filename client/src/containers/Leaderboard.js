@@ -53,7 +53,7 @@ class Leaderboard extends Component {
                                 <Table.Header>
                                     {
                                     this.props.catchPhrase?
-                                        <h3 class="ui header">Congratulations: {console.log(this.state.highScores[this.state.highScores -1])}</h3>
+                                        <h3 class="ui header">Congratulations You Won!</h3>
                            
                                 
                                     :

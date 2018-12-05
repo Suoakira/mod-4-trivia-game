@@ -18,7 +18,7 @@ export default class GameImageGuessForm extends Component {
 
 
     userGuess = userInput => {
-        if (userInput === this.props.correctAnswer) {
+        if (userInput.toLowerCase() === this.props.correctAnswer) {
             // place holder toggle for app, if they get the correct answer render the leader bored
             this.props.toggleCatchPhrase()
             // post scores then render scores
