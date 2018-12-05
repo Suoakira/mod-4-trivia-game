@@ -58,7 +58,7 @@ export default class index extends Component {
           currentUser
       })
       // window.localStorage.setItem('user', JSON.stringify(currentUser))
-      console.log(this.state.currentUser)
+
   }
 
   toggleCatchPhrase = () =>
@@ -151,8 +151,7 @@ render() {
         leaderboardOpen={this.state.leaderboardOpen}
         catchPhrase={catchPhrase}
      />
-       
-     
+
       {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
       <SignUp getCurrentUser={getCurrentUser} />
       <Leaderboard users={users} />
