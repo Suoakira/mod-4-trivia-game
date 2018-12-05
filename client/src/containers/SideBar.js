@@ -30,6 +30,7 @@ export default class SideBar extends Component {
 
   render() {
     return (
+
       <div>
       <PlayerInfo currentPoints={this.props.currentPoints} />
       <br></br>

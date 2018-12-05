@@ -13,6 +13,15 @@ code {
     monospace;
 }
 
+.container {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.title-header {
+  margin: 3em;
+}
+
 .quiz-box {
 
   /* padding: 10px; */
@@ -21,9 +30,9 @@ code {
   background: white;
   text-align: center;
   height: 15.22rem;
-  /* width: 21.4em; */
+
   width: 23.9em;
-  /* opacity: 0.2; */
+
   padding: 0px;
   margin: 0px;
 }
@@ -49,14 +58,25 @@ code {
   /* background-image: url(https://placeimg.com/800/600/arch); */
   /* background: url(./images/italy.png) no-repeat center center;
   background-size: cover; */
-  background-image: url(./images/italy.png)
+  background: url(./images/italy.png) no-repeat center center;
+  background-size: 65%;
 }
 
 .game-img-2 {
-  background-image: url(./images/aust.png)
+  background: url(./images/aust.png) no-repeat center center;
+  background-size: 65%;
 }
 .game-img-3 {
-  background-image: url(./images/india.png)
+  background: url(./images/egypt.png) no-repeat center center;
+  background-size: 65%;
+}
+.game-img-4 {
+  background: url(./images/china.png) no-repeat center center;
+  background-size: 65%;
+}
+.game-img-5 {
+  background: url(./images/france.png) no-repeat center center;
+  background-size: 65%;
 }
 
 
@@ -64,7 +84,7 @@ code {
 #game-image {
   width: 960px;
   height: 640px;
-  background-repeat: no-repeat;
+  /* background: no-repeat center; */
 
 }
 
@@ -111,14 +131,14 @@ code {
 
 /* gameTileButtonSelectButton */
 #questionSelect {
-  height: 15.22rem;
+  height: 16rem;
 
   width: 23.9em;
-  background: red;
-  opacity: 0.2;
+  /* background: white; */
+  /* opacity: 0.2; */
   padding: 0px;
   margin: 0px;
-  border: none;
+  border: solid 5px black;
 }
 
 /* Leaderboard */
