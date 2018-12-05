@@ -153,8 +153,8 @@ class GameTile extends Component {
             this.state.displayTile ?
             null
             :
-                    <div>
-                        <div className="quiz-box">
+                    <div className="quiz-box">
+                        <div className="game-tile-col">
 
                             <button id="questionSelect" onClick={() => this.open()}>
                     
@@ -169,15 +169,15 @@ class GameTile extends Component {
                     onClose={this.close}
                    >
 
-                    <Modal.Header >
-                        {questionCategory}
+                    <Modal.Header className="question-header" >
+                    {decodeHTML(mainQuestion)}
+                    {console.log(mainQuestion)}
                     </Modal.Header>
                         
                     <div>
                         <Modal.Content>
                             <br></br>
-                                {decodeHTML(mainQuestion)}
-                                {console.log(mainQuestion)}
+                  
                         </Modal.Content>
                         <div className="answer-buttons">
 

@@ -14,19 +14,18 @@ code {
 }
 
 .quiz-box {
-  background: white;
+
   /* padding: 10px; */
-  margin: 3px;
-  height: 200px;
-  width: 200px;
-  
+  /* margin: 3px; */
+
+  background: white;
   text-align: center;
-}
-
-
-#container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  height: 15.22rem;
+  /* width: 21.4em; */
+  width: 23.9em;
+  /* opacity: 0.2; */
+  padding: 0px;
+  margin: 0px;
 }
 
 /* Question Box */
@@ -35,20 +34,56 @@ code {
   text-align: center
 }
 
+.question-header {
+  text-align: center;
+}
+
+
+
+
+
 
 /* Game Area */
 .game-img-1 {
-  background-image: url(https://placeimg.com/800/600/arch);
+  background-image: url(https://placeimg.com/960/640/arch);
 }
 
+#game-image {
+  width: 960px;
+  height: 640px;
+  background-repeat: no-repeat;
+}
+
+.game-area {
+  width: 960px;
+  height: 640px;
+}
+
+.game-tile-col {
+  width: calc(100% / 3);
+  /* background-color: red; */
+  /* opacity: 0.2; */
+}
+
+
+
+/* Game Image Guess Form */
 .game-image-form {
   margin: 2em;
+}
+
+.game-image-guess-button {
+  text-align: center;
 }
 
 
 /* Comment Area and Comment Form*/
 .comment-submit {
   /* text-align: center; */
+}
+
+.incorrect-button {
+  text-align: center;
 }
 
 
@@ -62,13 +97,22 @@ code {
 
 /* gameTileButtonSelectButton */
 #questionSelect {
-  height: 200px;
-  width: 200px;
+  height: 15.22rem;
 
+  width: 23.9em;
+  background: red;
+  /* opacity: 0.2; */
+  padding: 0px;
+  margin: 0px;
+  border: none;
 }
 
 /* Leaderboard */
+.leaderboard-row {
+  text-align: center;
+}
+
 button.ui.button.leaderboard-button {
-  text-align: right;
+  text-align: center;
 }
 

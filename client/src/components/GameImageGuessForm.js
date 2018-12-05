@@ -84,7 +84,7 @@ export default class GameImageGuessForm extends Component {
                 <label>Enter you guess</label>
                 <input value={this.state.name} fluid label="Name" placeholder="You got this..." name="userInput" onChange={handleChange}/>
                 </Form.Field>
-                <Form.Button>Submit</Form.Button>
+                <Form.Button color='green' className="game-image-guess-button">Submit</Form.Button>
             </Form>
             }
 
@@ -100,7 +100,7 @@ export default class GameImageGuessForm extends Component {
                     <p>Catchphrase worth: -100 points!</p>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button onClick={() => close()}negative>Close</Button>
+                    <Button className="incorrect-button" onClick={() => close()}negative>Close</Button>
                 </Modal.Actions>
             </Modal>
         </div>
