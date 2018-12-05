@@ -59,7 +59,7 @@ export default class GameArea extends Component {
   render() {
     this.changeGameImage(this.props.correctAnswer)
 
-    const { quizQuestions, handleTileClick, currentPoints, correctAnswer, catchPhrase, toggleCatchPhrase, currentUser } = this.props
+    const { quizQuestions, handleTileClick, currentPoints, correctAnswer, catchPhrase, toggleCatchPhrase, currentUser, toggleLeaderboard } = this.props
 
 
     return (
@@ -86,6 +86,7 @@ export default class GameArea extends Component {
         toggleFormState={this.state.toggleForm}
         currentUser={currentUser}
         currentPoints={currentPoints}
+        toggleLeaderboard={toggleLeaderboard}
         />
       </div>
 

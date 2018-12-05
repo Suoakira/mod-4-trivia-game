@@ -38,7 +38,11 @@ code {
 
 /* Game Area */
 .game-img-1 {
-  background-image: url(https://placeimg.com/800/600/arch);
+  /* background-image: url(https://placeimg.com/800/600/arch); */
+  /* background: url(./images/italy.png) no-repeat center center;
+  background-size: cover; */
+  background-image: url(./images/italy.png)
+
 }
 
 .game-image-form {
@@ -70,5 +74,21 @@ code {
 /* Leaderboard */
 button.ui.button.leaderboard-button {
   text-align: right;
+}
+
+/* Leaderboard Overflow */
+.leaderboard-box-area {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+.leaderboard-center {
+  text-align: center;
+
+}
+
+/* ChatBox Area */
+.chat-box-area {
+    max-height: 300px;
+    overflow-y: scroll;
 }
 

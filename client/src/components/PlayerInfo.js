@@ -6,7 +6,7 @@ const PlayerArea = (props) => (
     <Grid.Column>
       <h3 class="ui header">Score</h3>
       <Segment>
-        Catchphrase Worth: {props.currentPoints()[1]}
+         Country Guess Worth: {props.currentPoints()[1]}
       </Segment>
       <Segment>
         Points: {props.currentPoints()[0]}

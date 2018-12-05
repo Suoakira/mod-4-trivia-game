@@ -39,10 +39,18 @@ export default class index extends Component {
       userPoints: [1000, 1000],
       catchPhrase: false,
       // currentUser: window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : null
-      currentUser: null
+      currentUser: null,
+      leaderboardOpen: false
+
     }
   }
 
+  toggleLeaderboard = () => {
+    this.setState({
+      leaderboardOpen: !this.state.leaderboardOpen
+    })
+    // console.log('leaderboard')
+  }
   
   getCurrentUser = currentUser => {
       this.setState({
@@ -135,7 +143,12 @@ render() {
 
   return (
     <div>
-    <NavBar currentUser={currentUser} />
+    <NavBar currentUser={currentUser}
+        toggleLeaderboard={this.toggleLeaderboard}
+        leaderboardOpen={this.state.leaderboardOpen}
+        catchPhrase={catchPhrase}
+     />
+     
       {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
       <SignUp getCurrentUser={getCurrentUser} />
       <Leaderboard users={users} />
@@ -149,6 +162,7 @@ render() {
         catchPhrase={catchPhrase}
         toggleCatchPhrase={toggleCatchPhrase}
         currentUser={currentUser}
+        toggleLeaderboard={this.toggleLeaderboard}
         />
       
 
