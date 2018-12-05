@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Image, Table, Modal } from 'semantic-ui-react'
+import { Table, Modal, Button } from 'semantic-ui-react'
 import LeaderboardRow from '../components/LeaderboardRow'
 
 
@@ -9,7 +9,6 @@ class Leaderboard extends Component {
         this.state = {
             userScores: [], 
             highScores: [],
-            leaderboardOpen: false
           }
     }
 
@@ -42,9 +41,8 @@ class Leaderboard extends Component {
     
     
     render() { 
-        const { leaderboardOpen } = this.props
         return (
-            <Modal open={leaderboardOpen} closeOnDimmerClick={true}>
+            <Modal open={this.props.leaderboardOpen} closeOnDimmerClick={true}>
                 <Modal.Header className='sign-up-form header'>Leaderboard</Modal.Header>
                     <Modal.Content >
                         <Table basic='very' celled collapsing>
@@ -59,6 +57,7 @@ class Leaderboard extends Component {
                                 {this.renderLeaderboard()}
                             </Table.Body>
                         </Table>
+                        <Button className="leaderboard-button" onClick={this.props.toggleLeaderboard}>Close</Button>
                     </Modal.Content>
             </Modal>
           );
