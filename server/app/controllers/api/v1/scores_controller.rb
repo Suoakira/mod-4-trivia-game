@@ -1,5 +1,5 @@
 class Api::V1::ScoresController < ApplicationController
-    before_action :set_score, only: [:show, :update]
+  
         
     def index 
         @scores = Score.all
@@ -15,7 +15,7 @@ class Api::V1::ScoresController < ApplicationController
     end
 
     def create
-        @score = score.new(score_params)
+        @score = Score.new(score_params)
         if @score.save
           render json: @score
         else
@@ -26,7 +26,7 @@ class Api::V1::ScoresController < ApplicationController
     private
 
     def score_params
-      params.require(:score).permit(:score)
+      params.require(:score).permit(:score, :user_id)
     end
 
     def set_score

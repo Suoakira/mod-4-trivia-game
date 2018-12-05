@@ -171,7 +171,7 @@ render() {
     <div>
     <NavBar currentUser={currentUser} />
       {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
-      {/* <SignUp getCurrentUser={getCurrentUser} /> */}
+      <SignUp getCurrentUser={getCurrentUser} />
       <Leaderboard users={users} />
 
       <GameArea 
