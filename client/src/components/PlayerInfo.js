@@ -4,6 +4,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 const PlayerArea = (props) => (
   <Grid stackable columns={1}>
     <Grid.Column>
+      <h3 class="ui header">Score</h3>
       <Segment>
         Catchphrase Worth: {props.currentPoints()[1]}
       </Segment>

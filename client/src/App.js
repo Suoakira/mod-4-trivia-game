@@ -12,7 +12,7 @@ const GAMES = "https://opentdb.com/api.php?amount=1&category=15&difficulty=easy&
 const TV = "https://opentdb.com/api.php?amount=1&category=14&difficulty=easy&type=multiple"
 const SPORTS = "https://opentdb.com/api.php?amount=1&category=21&difficulty=easy&type=multiple"
 const GENERAL = "https://opentdb.com/api.php?amount=1&category=9&difficulty=easy&type=multiple"
-const MATH = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=multiple"
+const MATH = "https://opentdb.com/api.php?amount=1&category=19&difficulty=easy&type=multiple"
 const GEOGRAPHY = "https://opentdb.com/api.php?amount=1&category=22&difficulty=easy"
 const MUSIC = "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=multiple"
 const MYTHOLOGY = "https://opentdb.com/api.php?amount=1&category=20&difficulty=easy&type=multiple"
@@ -50,39 +50,6 @@ export default class index extends Component {
       })
       // window.localStorage.setItem('user', JSON.stringify(currentUser))
       console.log(this.state.currentUser)
-  }
-  
-
-  iterate = () => {
-    console.log(this.state.quizQuestions)
-
-    const questions = [...this.state.quizQuestions]
-    console.log(questions.question)
-    // most important regex 
-    // questions.map(question => question.question.replace(/(&#039;)|(&quot;)/g, '"'))
-    var decodeHTML = function (html) {
-      var txt = document.createElement('textarea');
-      txt.innerHTML = html
-      return txt.value
-    }
-    questions.map(question => {
-      question.question = decodeHTML(question.question)
-    })
-    console.log(questions)
-   
-    // sanitizer.escape(question[0].question)
-    // sanitizer.escape(question[0].correct_answer)
-    // sanitizer.escape(question[0].incorrect_answers[0])
-    // sanitizer.escape(question[0].incorrect_answers[1])
-    // sanitizer.escape(question[0].incorrect_answers[2])
-    // questions[0].question.replace(/&quot;/g, '"')
-    // genre.results[0].correct_answer.replace(/&quot;/g, '"')
-    // genre.results[0].incorrect_answers[0].replace(/&quot;/g, '"')
-    // genre.results[0].incorrect_answers[1].replace(/&quot;/g, '"')
-    // genre.results[0].incorrect_answers[2].replace(/&quot;/g, '"')
-    this.setState({
-      quizQuestions: questions
-    })
   }
 
   toggleCatchPhrase = () =>
@@ -154,8 +121,7 @@ export default class index extends Component {
       correctAnswer: this.shuffleAnswer(this.answerArray),
       users: [...data],
       quizQuestions: [film.results[0], games.results[0], tv.results[0], sports.results[0], general.results[0], math.results[0], geography.results[0], music.results[0], mythology.results[0]]
-    }, () => {
-      this.iterate()
+
     }) 
     
     

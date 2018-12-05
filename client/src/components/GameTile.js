@@ -15,8 +15,6 @@ class GameTile extends Component {
             this.props.question.incorrect_answers[2],
             this.props.question.correct_answer])
         this.remainingPoints = 0
-        
-
         this.defaultSettings = {
             questionCategory: this.props.question.category,
             mainQuestion: this.props.question.question,
@@ -136,10 +134,15 @@ class GameTile extends Component {
     componentWillMount() {
         this.setState(this.defaultSettings)
     }
+    decodeHTML = function (html) {
+        var txt = document.createElement('textarea');
+        txt.innerHTML = html
+        return txt.value
+        }
     
     render() {
      
-        const { setTimerHitZero, handleAnswerButton, close, correctClose } = this
+        const { setTimerHitZero, handleAnswerButton, close, correctClose, decodeHTML } = this
         const { mainQuestion, questionCategory, buttonClass, answerA, answerB, answerC, answerD } = this.state
         
         
@@ -173,7 +176,8 @@ class GameTile extends Component {
                     <div>
                         <Modal.Content>
                             <br></br>
-                                {mainQuestion}
+                                {decodeHTML(mainQuestion)}
+                                {console.log(mainQuestion)}
                         </Modal.Content>
                         <div className="answer-buttons">
 
@@ -188,16 +192,16 @@ class GameTile extends Component {
                                 :
                         <Modal.Actions>
                             <Button className={buttonClass} onClick={(event) => handleAnswerButton(answerA, event)}>
-                                A: {answerA}<br></br>
+                                A: {decodeHTML(answerA)}<br></br>
                             </Button>
                             <Button className={buttonClass} onClick={(event) => handleAnswerButton(answerB, event)}>
-                                B: {answerB}<br></br>
+                                B: {decodeHTML(answerB)}<br></br>
                             </Button>
                             <Button className={buttonClass} onClick={(event) => handleAnswerButton(answerC, event)}>
-                                C: {answerC}<br></br>
+                                C: {decodeHTML(answerC)}<br></br>
                             </Button>
                             <Button className={buttonClass} onClick={(event) => handleAnswerButton(answerD, event)}>
-                                D: {answerD}<br></br>
+                                D: {decodeHTML(answerD)}<br></br>
                             </Button>
                         </Modal.Actions>
                             }
