@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Header, Icon, Image } from 'semantic-ui-react'
 
 import './App.css';
 import NavBar from './containers/NavBar';
@@ -23,7 +24,7 @@ export default class index extends Component {
   constructor(props) {
     super(props)
 
-    this.answerArray = ['italy', 'australia', 'india', 'mexico', 'france' ]
+    this.answerArray = ['italy', 'australia', 'egypt', 'china', 'france' ]
 
 
     // this.answerImageMap = {
@@ -106,6 +107,8 @@ export default class index extends Component {
   }
 
 
+
+
   async componentDidMount() {
 
     const data = await this.fetchData(API)
@@ -142,7 +145,7 @@ render() {
   const { correctAnswer, quizQuestions, catchPhrase, currentUser, users  } = this.state
 
   return (
-    <div>
+    <div className="container">
     <NavBar currentUser={currentUser}
         toggleLeaderboard={this.toggleLeaderboard}
         leaderboardOpen={this.state.leaderboardOpen}

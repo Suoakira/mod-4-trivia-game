@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Header, Image, Icon } from 'semantic-ui-react'
 import GameTile from "../components/GameTile"
 import SideBar from '../containers/SideBar'
 import GameImageGuessForm from '../components/GameImageGuessForm'
@@ -28,8 +28,14 @@ export default class GameArea extends Component {
       case 'australia':
       this.city = 'game-img-2'
       break
-      case 'india':
+      case 'egypt':
       this.city = 'game-img-3'
+      break
+      case 'china':
+      this.city = 'game-img-4'
+      break
+      case 'france':
+      this.city = 'game-img-5'
       break
       default: 
       this.city = 'game-img-default'
@@ -78,7 +84,7 @@ export default class GameArea extends Component {
   
         <Grid.Column width={12}>
 
-
+     
 
       <div className="game-image-form">
       <GameImageGuessForm 
