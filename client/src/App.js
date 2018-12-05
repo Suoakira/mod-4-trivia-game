@@ -4,7 +4,7 @@ import './App.css';
 import NavBar from './containers/NavBar';
 import GameArea from './containers/GameArea'
 import SignUp from './components/SignUp'
-import Leaderboard from './components/Leaderboard';
+import Leaderboard from './containers/Leaderboard';
 
 const API = 'http://localhost:3000/api/v1/users/'
 const FILM = "https://opentdb.com/api.php?amount=1&category=11&difficulty=easy&type=multiple"
@@ -171,7 +171,7 @@ render() {
     <div>
     <NavBar currentUser={currentUser} />
       {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
-      {/* <SignUp getCurrentUser={getCurrentUser} /> */}
+      <SignUp getCurrentUser={getCurrentUser} />
       <Leaderboard users={users} />
 
       <GameArea 

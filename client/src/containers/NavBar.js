@@ -1,13 +1,29 @@
 import React, { Component } from 'react'
 import { Button, Dropdown, Menu } from 'semantic-ui-react'
+import Leaderboard from './Leaderboard'
 
 export default class MenuExampleSizeMini extends Component {
-  state = { activeItem: 'home' }
+  state = { 
+    activeItem: 'home',
+    leaderboardOpen: false
+  }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+  openLeaderboard = () => {
+    this.setState({
+      leaderboardOpen: true
+    })
+    // console.log('leaderboard')
+  }
+
+  onClickLeaderboard = () => {
+    // this.handleItemClick()
+    this.openLeaderboard()
+  }
+
   render() {
-    const { activeItem } = this.state
+    const { activeItem, leaderboardOpen } = this.state
 
     return (
       <Menu size='mini'>
@@ -16,6 +32,13 @@ export default class MenuExampleSizeMini extends Component {
           name='Instructions'
           active={activeItem === 'Instructions'}
           onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='Leaderboard'
+          active={activeItem === 'Leaderboard'}
+          onClick={this.onClickLeaderboard}
+          
+          
         />
 
         <Menu.Menu position='right'>
