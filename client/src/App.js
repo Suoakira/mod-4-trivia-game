@@ -151,12 +151,7 @@ render() {
         leaderboardOpen={this.state.leaderboardOpen}
         catchPhrase={catchPhrase}
      />
-<<<<<<< HEAD
-       
-     
-=======
 
->>>>>>> 2c7859b6a531f8a593385e35f7bdbd07e72cf0df
       {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
       <SignUp getCurrentUser={getCurrentUser} />
       <Leaderboard users={users} />
