@@ -16,7 +16,9 @@ render() {
             <div className="comment-area">
                 <h3 class="ui header">Chat Room</h3>
                 <div class="ui raised segment">
-                 {this.renderComments()}
+                    <div className="chat-box-area">
+                     {this.renderComments()}
+                    </div>
                 </div>
     
             </div>

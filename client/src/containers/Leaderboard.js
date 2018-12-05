@@ -20,6 +20,9 @@ class Leaderboard extends Component {
             this.sortUsersByScore(data)
         }
     )
+
+    hardReload = () =>
+        window.location.reload()
     
 
     sortUsersByScore = (users) => {
@@ -42,24 +45,42 @@ class Leaderboard extends Component {
     
     render() { 
         return (
-            <Modal open={this.props.leaderboardOpen} closeOnDimmerClick={true}>
-                <Modal.Header className='sign-up-form header'>Leaderboard</Modal.Header>
-                    <Modal.Content >
-                        <Table basic='very' celled collapsing>
-                            <Table.Header>
-                                <Table.Row>
-                                    <Table.HeaderCell>User</Table.HeaderCell>
-                                    <Table.HeaderCell>Score</Table.HeaderCell>
-                                 </Table.Row>
-                             </Table.Header>
+            <div className="leaderboard-center" >
+                <Modal open={this.props.leaderboardOpen} closeOnDimmerClick={true}>
+                    <Modal.Header className='sign-up-form header'>Leaderboard</Modal.Header>
+                        <Modal.Content >
+                            <Table basic='very' celled collapsing>
+                                <Table.Header>
+                                    {
+                                    this.props.catchPhrase?
+                                        <h3 class="ui header">Congratulations: {console.log(this.state.highScores[this.state.highScores -1])}</h3>
+                           
+                                
+                                    :
+                                    null
+                                    }
+                                    <Table.Row>
+                                        <Table.HeaderCell>User</Table.HeaderCell>
+                                        <Table.HeaderCell>Score</Table.HeaderCell>
+                                    </Table.Row>
+                                </Table.Header>
 
-                             <Table.Body>
-                                {this.renderLeaderboard()}
-                            </Table.Body>
-                        </Table>
-                        <Button className="leaderboard-button" onClick={this.props.toggleLeaderboard}>Close</Button>
-                    </Modal.Content>
-            </Modal>
+                                <Table.Body>
+                                    <div className="leaderboard-box-area">
+                                    {this.renderLeaderboard()}
+                                    </div>
+                                </Table.Body>
+                            </Table>
+                            {
+                            this.props.catchPhrase?
+                                
+                            <Button className="ui primary button" onClick={() => this.hardReload()}>New Game</Button>
+                                :
+                            <Button className="leaderboard-button" onClick={this.props.toggleLeaderboard}>Close</Button>
+                            }
+                        </Modal.Content>
+                </Modal>
+            </div>
           );
     }
 }

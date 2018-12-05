@@ -44,11 +44,14 @@ class SignUp extends Component {
 
     return (
         <Modal open={modal} closeOnDimmerClick={false}>
-        <Modal.Header className='sign-up-form header'>Sign Up</Modal.Header>
+        <Modal.Header className='sign-up-form header'>Welcome to Guess the country!</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
             <Header></Header>
               <Form onSubmit={handleSubmit}>
+
+
+              <h5 class="ui header">Please Enter A Username</h5>
                 <Form.Input className='sign-up-form' placeholder='Name' name='username' value={name} onChange={handleChange} />
                 <Form.Button>Submit</Form.Button>
               </Form>

@@ -22,6 +22,7 @@ export default class GameImageGuessForm extends Component {
             // place holder toggle for app, if they get the correct answer render the leader bored
             this.props.toggleCatchPhrase()
             // post scores then render scores
+            this.props.toggleLeaderboard()
             this.postScores()
             
             console.log('Correct!');
@@ -97,7 +98,7 @@ export default class GameImageGuessForm extends Component {
             <Modal size="small" open={this.state.open}>
                 <Modal.Header>Incorrect!</Modal.Header>
                 <Modal.Content>
-                    <p>Catchphrase worth: -100 points!</p>
+                    <p>Country Guess Worth: -100 points!</p>
                 </Modal.Content>
                 <Modal.Actions>
                     <Button className="incorrect-button" onClick={() => close()}negative>Close</Button>

@@ -5,31 +5,18 @@ import Leaderboard from './Leaderboard'
 export default class MenuExampleSizeMini extends Component {
   state = { 
     activeItem: 'home',
-    leaderboardOpen: false
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  toggleLeaderboard = () => {
-    this.setState({
-      leaderboardOpen: !this.state.leaderboardOpen
-    })
-    // console.log('leaderboard')
-  }
 
-  onClickLeaderboard = () => {
-    // this.handleItemClick()
-    // this.openLeaderboard()
-    
-  }
-  
   render() {
     const { activeItem } = this.state
     
     return (
       <div>
       
-      <Leaderboard toggleLeaderboard={this.toggleLeaderboard} leaderboardOpen={this.state.leaderboardOpen} />
+        <Leaderboard toggleLeaderboard={this.props.toggleLeaderboard} leaderboardOpen={this.props.leaderboardOpen} catchPhrase={this.props.catchPhrase} />
       
       <Menu size='mini'>
         <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
@@ -41,9 +28,7 @@ export default class MenuExampleSizeMini extends Component {
         <Menu.Item
           name='Leaderboard'
           active={activeItem === 'Leaderboard'}
-          onClick={this.toggleLeaderboard}
-          
-          
+          onClick={this.props.toggleLeaderboard}
         />
 
         <Menu.Menu position='right'>
