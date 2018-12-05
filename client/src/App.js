@@ -23,7 +23,7 @@ export default class index extends Component {
   constructor(props) {
     super(props)
 
-    this.answerArray = ['london', 'milan']
+    this.answerArray = ['italy', 'australia', 'india', 'mexico', 'france' ]
 
 
     // this.answerImageMap = {

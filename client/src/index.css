@@ -52,6 +52,13 @@ code {
   background-image: url(./images/italy.png)
 }
 
+.game-img-2 {
+  background-image: url(./images/aust.png)
+}
+.game-img-3 {
+  background-image: url(./images/india.png)
+}
+
 
 
 #game-image {
@@ -108,7 +115,7 @@ code {
 
   width: 23.9em;
   background: red;
-  /* opacity: 0.2; */
+  opacity: 0.2;
   padding: 0px;
   margin: 0px;
   border: none;
