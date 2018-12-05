@@ -67,5 +67,8 @@ code {
 
 }
 
-
+/* Leaderboard */
+button.ui.button.leaderboard-button {
+  text-align: right;
+}
 
