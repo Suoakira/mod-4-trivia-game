@@ -72,22 +72,24 @@ export default class GameArea extends Component {
     
         {/* main body */}
         <Grid.Column width={12}>
-        {
-          this.state.toggleForm ?
-          null
-          :
+
+
+
       <div className="game-image-form">
-                  <GameImageGuessForm 
-                   correctAnswer={correctAnswer}
-                   points={this.props.questionPoints} 
-                   toggleForm={this.toggleForm} 
-                   disableAllButtons={this.disableAllButtons} 
-                   catchPhrase={catchPhrase}
-                   toggleCatchPhrase={toggleCatchPhrase}
-                   />
+      <GameImageGuessForm 
+        correctAnswer={correctAnswer}
+        points={this.props.questionPoints} 
+        toggleForm={this.toggleForm} 
+        disableAllButtons={this.disableAllButtons} 
+        catchPhrase={catchPhrase}
+        toggleCatchPhrase={toggleCatchPhrase}
+        toggleFormState={this.state.toggleForm}
+        currentUser={currentUser}
+        currentPoints={currentPoints}
+        />
       </div>
 
-        }
+
 
         {/* could flip css class w/ pic via function */}
       {/* <div style={{ backgroundImage: `url(https://placeimg.com/800/600/${this.props.correctAnswer}?id=1)` }} className={this.city}> */}
