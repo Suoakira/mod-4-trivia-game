@@ -23,6 +23,7 @@ export default class GameImageGuessForm extends Component {
             this.props.toggleCatchPhrase()
             // post scores then render scores
             this.postScores()
+            
             console.log('Correct!');
         } else {
             console.log('Wrong');

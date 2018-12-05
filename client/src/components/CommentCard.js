@@ -1,10 +1,12 @@
 import React from 'react'
+import { Segment } from 'semantic-ui-react';
 
 export default function CommentCard(props) {
   return (
-    <div>
-      <p>{props.commentObj.user.username}: {props.commentObj.comment}</p>
+    <div style={{ color: 'black' }}>
 
+        {props.commentObj.user.username}: {props.commentObj.comment}
+     
     </div>
   )
 }
