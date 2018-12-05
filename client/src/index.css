@@ -156,10 +156,13 @@ button.ui.button.leaderboard-button {
     overflow-y: scroll;
 }
 .leaderboard-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%)
+   width: 300px;
+   height: 300px;
+   position: absolute;
+   left: 50%;
+   top: 50%; 
+   margin-left: -150px;
+   margin-top: -150px;
 
 }
 

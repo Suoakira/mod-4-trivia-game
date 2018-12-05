@@ -82,7 +82,7 @@ export default class GameImageGuessForm extends Component {
 
             <Form onSubmit={handleSubmit}>
                 <Form.Field>
-                <label>Enter you guess</label>
+                <label>Can you guess the outline of the country below?</label>
                 <input value={this.state.name} fluid label="Name" placeholder="You got this..." name="userInput" onChange={handleChange}/>
                 </Form.Field>
                 <Form.Button color='green' className="game-image-guess-button">Submit</Form.Button>
