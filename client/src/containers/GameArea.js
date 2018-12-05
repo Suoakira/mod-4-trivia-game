@@ -69,8 +69,7 @@ export default class GameArea extends Component {
       
 
     <Grid >
-    
-        {/* main body */}
+  
         <Grid.Column width={12}>
 
 
@@ -91,50 +90,47 @@ export default class GameArea extends Component {
       </div>
 
 
-
-        {/* could flip css class w/ pic via function */}
-      {/* <div style={{ backgroundImage: `url(https://placeimg.com/800/600/${this.props.correctAnswer}?id=1)` }} className={this.city}> */}
-      <div className={this.city}>
+      <div id="game-image" className={this.city}>
 
         <div className="ui three column grid">
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[0]}
         
 
         </div>
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[1]}
         
 
 
         </div>
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[2]}
 
         </div>
         </div>
         <div className="ui three column grid">
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[3]}
 
         </div>
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[4]}
         </div>
 
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[5]}
         </div>
 
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[6]}
         </div>
 
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[7]}
         </div>
 
-        <div className="column">
+        <div className="game-tile-col">
         {this.quizQuestionsMap(quizQuestions, handleTileClick)[8]}
         </div>
       </div>
