@@ -57,6 +57,7 @@ class Leaderboard extends Component {
                                     this.props.catchPhrase?
                                 
                                         <h3 class="ui header">Congratulations You Won!</h3>
+                
                                           :
                                         null
                                          }

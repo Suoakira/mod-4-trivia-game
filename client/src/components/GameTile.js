@@ -102,7 +102,7 @@ class GameTile extends Component {
 
             this.setState({
                 questionCategory: "Correct +50 Points",
-                mainQuestion: "Well done! Now see if you can guess what the city is behind the tiles!",
+                mainQuestion: "Well done! Now see if you can guess what the country is behind the tiles!",
                 correctAnswerGiven: true,
                 answerSubmit: false
             })
