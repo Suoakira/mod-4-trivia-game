@@ -43,8 +43,6 @@ export default class CommentForm extends Component {
     })
   }
 
- 
-  
   render() {
     const { handleChange, handleSubmit } = this
     return (

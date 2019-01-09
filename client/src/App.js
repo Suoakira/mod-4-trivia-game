@@ -25,12 +25,6 @@ export default class index extends Component {
     super(props)
 
     this.answerArray = ['italy', 'australia', 'egypt', 'china', 'france' ]
-
-
-    // this.answerImageMap = {
-    //   'london': 4,
-    //   'milan': 3
-    // }
   
     this.state = {
       users: [],
@@ -39,9 +33,9 @@ export default class index extends Component {
       quizQuestions: [],
       userPoints: [1000, 1000],
       catchPhrase: false,
-      // currentUser: window.localStorage.getItem('user') ? JSON.parse(window.localStorage.getItem('user')) : null
       currentUser: null,
-      leaderboardOpen: false
+      leaderboardOpen: false,
+      winnerScore: undefined
 
     }
   }
@@ -50,22 +44,19 @@ export default class index extends Component {
     this.setState({
       leaderboardOpen: !this.state.leaderboardOpen
     })
-    // console.log('leaderboard')
   }
   
   getCurrentUser = currentUser => {
       this.setState({
           currentUser
       })
-      // window.localStorage.setItem('user', JSON.stringify(currentUser))
-
   }
 
   toggleCatchPhrase = () =>
     this.setState({ catchPhrase: !this.state.catchPhrase})
+
+  updateScore = (score) => this.setState({winnerScore: score})
   
-
-
   questionPoints = (answer) => {
       if (answer === "correct" ) {
       this.setState({
@@ -95,25 +86,16 @@ export default class index extends Component {
       return a[0];
   }
 
-    currentPoints = () =>
-      this.state.userPoints
+  currentPoints = () => this.state.userPoints
 
   fetchData = async (url) => {
-
     let resp = await fetch(url)
       .then(resp => resp.json())
-    // this.iterate(resp)
     return resp
   }
 
-
-
-
   async componentDidMount() {
-
     const data = await this.fetchData(API)
-
-
     const film = await this.fetchData(FILM)
     const games = await this.fetchData(GAMES)
     const tv = await this.fetchData(TV)
@@ -123,40 +105,34 @@ export default class index extends Component {
     const geography = await this.fetchData(GEOGRAPHY)
     const music = await this.fetchData(MUSIC)
     const mythology = await this.fetchData(MYTHOLOGY)
-
-
     this.setState({correctAnswer: this.shuffleAnswer(this.answerArray)})
     // this.setState({imageId: this.answerImageMap[this.state.correctAnswer]})
-    
     this.setState({
       correctAnswer: this.shuffleAnswer(this.answerArray),
       users: [...data],
       quizQuestions: [film.results[0], games.results[0], tv.results[0], sports.results[0], general.results[0], math.results[0], geography.results[0], music.results[0], mythology.results[0]]
-
     }) 
-    
-    
   }
 
   
 render() {
   
-  const { handleTileClick, questionPoints, currentPoints, toggleCatchPhrase, getCurrentUser } = this
-  const { correctAnswer, quizQuestions, catchPhrase, currentUser, users  } = this.state
+  const { handleTileClick, questionPoints, currentPoints, toggleCatchPhrase, getCurrentUser, updateScore } = this
+  const { correctAnswer, quizQuestions, catchPhrase, currentUser, users, winnerScore  } = this.state
 
   return (
     <div className="container">
-    <NavBar currentUser={currentUser}
-        toggleLeaderboard={this.toggleLeaderboard}
-        leaderboardOpen={this.state.leaderboardOpen}
-        catchPhrase={catchPhrase}
-     />
+      <NavBar currentUser={currentUser}
+          toggleLeaderboard={this.toggleLeaderboard}
+          leaderboardOpen={this.state.leaderboardOpen}
+          catchPhrase={catchPhrase}
+      />
 
-      {/* {!currentUser && <SignUp getCurrentUser={getCurrentUser} />} */}
       <SignUp getCurrentUser={getCurrentUser} />
-      <Leaderboard users={users} />
+      <Leaderboard users={users} winnerScore={winnerScore} />
 
       <GameArea 
+        updateScore={updateScore}
         quizQuestions={quizQuestions} 
         handleTileClick={handleTileClick} 
         questionPoints={questionPoints} 
@@ -167,8 +143,6 @@ render() {
         currentUser={currentUser}
         toggleLeaderboard={this.toggleLeaderboard}
         />
-      
-
     </div>
   )
 }

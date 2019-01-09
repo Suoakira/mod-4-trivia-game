@@ -44,7 +44,7 @@ class SignUp extends Component {
 
     return (
         <Modal open={modal} closeOnDimmerClick={false}>
-        <Modal.Header className='sign-up-form header'>Welcome to Guess The Country!</Modal.Header>
+        <Modal.Header className='sign-up-form header'>Welcome to Where On Earth?</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
             <Header></Header>

@@ -19,14 +19,15 @@ export default class SideBar extends Component {
   this.fetchComments()
   }
 
-  addComment = comment => {
-    // const copyArray = [...this.state.userComments]
-    this.setState({userComments: [...this.state.userComments, comment]})
+  updateScroll = () => {
+    const element = document.querySelector(".chat-box-area")
+    element.scrollTop = element.scrollHeight
   }
 
-
-  
-
+  addComment = comment => {
+    // const copyArray = [...this.state.userComments]
+    this.setState({userComments: [...this.state.userComments, comment]}, () => this.updateScroll())
+  }
 
   render() {
     return (

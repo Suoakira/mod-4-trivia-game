@@ -16,7 +16,6 @@ export default class GameImageGuessForm extends Component {
     toggleIncorrect = () => 
         this.setState({toggleIncorrect: !this.state.toggleIncorrect})
 
-
     userGuess = userInput => {
         if (userInput.toLowerCase() === this.props.correctAnswer) {
             // place holder toggle for app, if they get the correct answer render the leader bored
@@ -32,17 +31,14 @@ export default class GameImageGuessForm extends Component {
             this.props.toggleForm()
             this.props.disableAllButtons()
             this.toggleIncorrect() 
-        
         }
     }
 
     postScores = () => {
         const newScore = {
-
             score: this.props.currentPoints()[0] + this.props.currentPoints()[1],
             user_id: this.props.currentUser.id
         }
-
         fetch(`http://localhost:3000/api/v1/scores`, {
             method: "POST",
             headers: {
@@ -50,6 +46,7 @@ export default class GameImageGuessForm extends Component {
             },
             body: JSON.stringify({ score: newScore })
         }).then(resp => resp.json())
+            .then(resp => this.props.updateScore(resp))
     }
 
 
@@ -67,10 +64,8 @@ export default class GameImageGuessForm extends Component {
     close = () => { 
         this.setState({ open: false })
         this.toggleIncorrect()
-  
     }
     
-
   render() {
       const { toggleFalseModal } = this.state
       const { handleChange, handleSubmit, close } = this
@@ -79,7 +74,6 @@ export default class GameImageGuessForm extends Component {
             {this.props.toggleFormState ? 
             null
             :
-
             <Form onSubmit={handleSubmit}>
                 <Form.Field>
                 <label>Can you guess the outline of the country below?</label>
