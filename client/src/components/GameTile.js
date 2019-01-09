@@ -37,8 +37,7 @@ class GameTile extends Component {
     // ====================== close an open Modal=======================================
 
     close = () =>
-        this.setState( this.defaultSettings
-            )
+        this.setState( this.defaultSettings )
 
     open = () =>
         this.setState({ showModal: true })
@@ -134,6 +133,8 @@ class GameTile extends Component {
     componentWillMount() {
         this.setState(this.defaultSettings)
     }
+
+    // regex parser first converts to html, then back again
     decodeHTML = function (html) {
         var txt = document.createElement('textarea');
         txt.innerHTML = html

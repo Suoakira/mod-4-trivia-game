@@ -41,7 +41,7 @@ export default class MenuExampleSizeMini extends Component {
       </Menu>
 
         <Header as='h2' className="title-header">
-        <i class="globe icon"></i>Guess The Country
+        <i class="globe icon"></i>Where On Earth?
         </Header>
 
 

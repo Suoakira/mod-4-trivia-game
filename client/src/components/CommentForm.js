@@ -37,6 +37,11 @@ export default class CommentForm extends Component {
     this.setState({userComment: ''})
   }
 
+  updateScroll = () => {
+    const element = document.querySelector(".chat-box-area")
+    element.scrollTop = element.scrollHeight
+  }
+
   handleChange = event => {
     this.setState({
         [event.target.name]: event.target.value
