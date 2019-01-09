@@ -25,25 +25,52 @@ class Leaderboard extends Component {
         window.location.reload()
     
 
-    sortUsersByScore = (users) => {
-    const copyUserScores = [...users]
+    sortUsersByScore = (scores) => {
+    const copyUserScores = [...scores]
         copyUserScores.sort((a, b) => b.score - a.score )
         this.setState({highScores: copyUserScores })
         }
 
+    sortUsersByLocalScore = (scores) => {
+        const copyUserScores = [...scores]
+        return copyUserScores.sort((a, b) => b.score - a.score)
+    }
+    
+    updateLocalScore = () => {
+        if (!!this.props.winnerScore) {
+            this.setState({userScores: [...this.state.userScores, this.props.winnerScore]})
+            this.sortUsersByScore(this.state.userScores)
+        } else {
+            return null
+        }
+    }
 
     componentDidMount() {
+        this.setState({ winnerScore: this.props.winnerScore})
         this.getScores()
     }
     
     renderLeaderboard = () => {
+        if (!this.props.winnerScore) {
         const highScoresCopy = [...this.state.highScores]
-        return highScoresCopy.map(user => <LeaderboardRow index={highScoresCopy.indexOf(user)} leaderboardUser={user} />)
+            console.log("a", highScoresCopy )
+            return highScoresCopy.map(user => <LeaderboardRow index={highScoresCopy.indexOf(user)} leaderboardUser={user} />)
+        }
+        else
+        {
+        const updatedLocalScores = [...this.state.userScores, this.props.winnerScore] 
+        const sortedLocalScores = this.sortUsersByLocalScore(updatedLocalScores)
+            console.log("b", sortedLocalScores)
+            return sortedLocalScores.map(user => <LeaderboardRow index={sortedLocalScores.indexOf(user)} leaderboardUser={user} />)
+        }
     }
     
     
     
     render() { 
+        
+   
+        
         return (    
                 <Modal size="small" open={this.props.leaderboardOpen} closeOnDimmerClick={true}>
                     <Modal.Header className='sign-up-form header'>High Scores</Modal.Header>
