@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Modal, Button } from 'semantic-ui-react'
+import { Table, Modal, Button, Grid } from 'semantic-ui-react'
 import LeaderboardRow from '../components/LeaderboardRow'
 
 
@@ -44,45 +44,44 @@ class Leaderboard extends Component {
     
     
     render() { 
-        return (
-            <div className="leaderboard-center" >
-                <Modal open={this.props.leaderboardOpen} closeOnDimmerClick={true}>
+        return (    
+                <Modal size="small" open={this.props.leaderboardOpen} closeOnDimmerClick={true}>
                     <Modal.Header className='sign-up-form header'>High Scores</Modal.Header>
                         <Modal.Content >
-                            <Table basic='very' celled collapsing>
-                                <Table.Header>
+                            <div className="leaderboard-box-area">
+                        <Grid centered columns={2}>
+                            <Grid.Column>
+                                <Table basic='very' fixed>
+                                    <Table.Header>
+                                        {                 
+                                        this.props.catchPhrase?          
+                                            <h3 class="ui header">Congratulations You Won!</h3>
+                                            :
+                                            null
+                                            } 
+                                        <Table.Row>
+                                            <Table.HeaderCell center>Rank</Table.HeaderCell>
+                                            <Table.HeaderCell>User</Table.HeaderCell>
+                                            <Table.HeaderCell>Score</Table.HeaderCell>
+                                        </Table.Row>
+                                    </Table.Header>
                                 
-                                    {
-                                     
-                                    this.props.catchPhrase?
-                                
-                                        <h3 class="ui header">Congratulations You Won!</h3>
-                
-                                          :
-                                        null
-                                         }
-                                    <Table.Row>
-                                        <Table.HeaderCell>User</Table.HeaderCell>
-                                        <Table.HeaderCell>Score</Table.HeaderCell>
-                                    </Table.Row>
-                                </Table.Header>
-
-                                <Table.Body>
-                                    <div className="leaderboard-box-area">
-                                    {this.renderLeaderboard()}
-                                    </div>
-                                </Table.Body>
-                            </Table>
+                                    <Table.Body>
+                                        {this.renderLeaderboard()}
+                                    </Table.Body>
+                                </Table>
+                            </Grid.Column>
+                        </Grid>
+                            </div>
                             {
                             this.props.catchPhrase?
-                                
                             <Button className="ui primary button" onClick={() => this.hardReload()}>New Game</Button>
                                 :
-                            <Button className="leaderboard-button" onClick={this.props.toggleLeaderboard}>Close</Button>
+                            <Button primary ui className="leaderboard-button" onClick={this.props.toggleLeaderboard}>Close</Button>
                             }
                         </Modal.Content>
                 </Modal>
-            </div>
+
           );
     }
 }

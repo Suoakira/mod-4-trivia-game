@@ -159,18 +159,9 @@ button.ui.button.leaderboard-button {
 
 /* Leaderboard Overflow */
 .leaderboard-box-area {
-    max-height: 500px;
+    max-height: 450px;
     overflow-y: scroll;
-}
-.leaderboard-center {
-   width: 300px;
-   height: 300px;
-   position: absolute;
-   left: 50%;
-   top: 50%; 
-   margin-left: -150px;
-   margin-top: -150px;
-
+    overflow-x: hidden;
 }
 
 /* ChatBox Area */
