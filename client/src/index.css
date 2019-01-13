@@ -29,12 +29,27 @@ code {
 
   background: white;
   text-align: center;
-  height: 15.22rem;
+  height: 20em;
 
-  width: 23.9em;
+  width: 100%;
 
   padding: 0px;
+  margin-bottom: -8.8%;
+}
+
+/* gameTileButtonSelectButton */
+#questionSelect {
+  height: 20em;
+
+  width: 100%;
+  /* background: white; */
+  /* opacity: 0.2; */
+  padding: 0px;
   margin: 0px;
+  margin-bottom: -8.8%;
+
+
+
 }
 
 /* Question Box */
@@ -94,7 +109,7 @@ code {
 }
 
 .game-tile-col {
-  width: calc(100% / 3);
+  /* width: calc(100% / 3); */
   /* background-color: red; */
   /* opacity: 0.2; */
 }
@@ -115,6 +130,9 @@ code {
 .comment-submit {
   /* text-align: center; */
 }
+.padding-left {
+  padding-left: 5%;
+}
 
 .incorrect-button {
   text-align: center;
@@ -129,17 +147,7 @@ code {
   margin-bottom: 1em;
 }
 
-/* gameTileButtonSelectButton */
-#questionSelect {
-  height: 16rem;
 
-  width: 23.9em;
-  /* background: white; */
-  /* opacity: 0.2; */
-  padding: 0px;
-  margin: 0px;
-  border: solid 5px #949a9d;
-}
 
 /* Leaderboard */
 .leaderboard-row {
@@ -168,5 +176,12 @@ button.ui.button.leaderboard-button {
 .chat-box-area {
     max-height: 300px;
     overflow-y: scroll;
+}
+
+
+/* ---------------------------- semantic ui game area grid ------------------------ */
+
+.noPadding {
+  padding: 0 !important;
 }
 

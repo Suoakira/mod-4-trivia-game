@@ -9,6 +9,7 @@ class Leaderboard extends Component {
         this.state = {
             userScores: [], 
             highScores: [],
+            reload: false
           }
     }
 
@@ -28,13 +29,8 @@ class Leaderboard extends Component {
     sortUsersByScore = (scores) => {
     const copyUserScores = [...scores]
         copyUserScores.sort((a, b) => b.score - a.score )
-        this.setState({highScores: copyUserScores })
+        this.setState({ highScores: copyUserScores })
         }
-
-    sortUsersByLocalScore = (scores) => {
-        const copyUserScores = [...scores]
-        return copyUserScores.sort((a, b) => b.score - a.score)
-    }
     
     updateLocalScore = () => {
         if (!!this.props.winnerScore) {
@@ -47,25 +43,25 @@ class Leaderboard extends Component {
 
     componentDidMount() {
         this.setState({ winnerScore: this.props.winnerScore})
+        this.updateLocalScore()
         this.getScores()
+        this.renderLeaderboard()
     }
     
     renderLeaderboard = () => {
         if (!this.props.winnerScore) {
         const highScoresCopy = [...this.state.highScores]
             console.log("a", highScoresCopy )
-            return highScoresCopy.map(user => <LeaderboardRow index={highScoresCopy.indexOf(user)} leaderboardUser={user} />)
+            return this.setState({ highScores: this.sortedLocalScores })
         }
         else
         {
         const updatedLocalScores = [...this.state.userScores, this.props.winnerScore] 
         const sortedLocalScores = this.sortUsersByLocalScore(updatedLocalScores)
             console.log("b", sortedLocalScores)
-            return sortedLocalScores.map(user => <LeaderboardRow index={sortedLocalScores.indexOf(user)} leaderboardUser={user} />)
+            return this.setState({ highScores: this.sortedLocalScores })
         }
     }
-    
-    
     
     render() { 
         
@@ -76,29 +72,33 @@ class Leaderboard extends Component {
                     <Modal.Header className='sign-up-form header'>High Scores</Modal.Header>
                         <Modal.Content >
                             <div className="leaderboard-box-area">
-                        <Grid centered columns={2}>
-                            <Grid.Column>
-                                <Table basic='very' fixed>
-                                    <Table.Header>
-                                        {                 
-                                        this.props.catchPhrase?          
-                                            <h3 class="ui header">Congratulations You Won!</h3>
-                                            :
-                                            null
-                                            } 
-                                        <Table.Row>
-                                            <Table.HeaderCell center>Rank</Table.HeaderCell>
-                                            <Table.HeaderCell>User</Table.HeaderCell>
-                                            <Table.HeaderCell>Score</Table.HeaderCell>
-                                        </Table.Row>
-                                    </Table.Header>
-                                
-                                    <Table.Body>
-                                        {this.renderLeaderboard()}
-                                    </Table.Body>
-                                </Table>
-                            </Grid.Column>
-                        </Grid>
+                                <Grid centered columns={2}>
+                                    <Grid.Column>
+                                        <Table basic='very' fixed>
+                                            <Table.Header>
+                                                {                 
+                                                this.props.catchPhrase?          
+                                                <h3 className='sign-up-form header' >Congratulations You Won!</h3>
+                                                    :
+                                                    null
+                                                    } 
+                                                <Table.Row>
+                                                    <Table.HeaderCell center>Rank</Table.HeaderCell>
+                                                    <Table.HeaderCell>User</Table.HeaderCell>
+                                                    <Table.HeaderCell>Score</Table.HeaderCell>
+                                                </Table.Row>
+                                            </Table.Header>
+                                        
+                                            <Table.Body>
+                                                {this.state.highScores ?
+                                        [...this.state.highScores].map(user => <LeaderboardRow index={[...this.state.highScores].indexOf(user)} leaderboardUser={user} />)
+                                        :
+                                        null
+                                        }
+                                            </Table.Body>
+                                        </Table>
+                                    </Grid.Column>
+                                </Grid>
                             </div>
                             {
                             this.props.catchPhrase?

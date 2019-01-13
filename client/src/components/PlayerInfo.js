@@ -9,7 +9,7 @@ const PlayerArea = (props) => (
          Country Guess Worth: {props.currentPoints()[1]}
       </Segment>
       <Segment>
-        Points: {props.currentPoints()[0]}
+        Question Points: {props.currentPoints()[0]}
       </Segment>
     </Grid.Column>
   </Grid>

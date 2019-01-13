@@ -130,7 +130,7 @@ class GameTile extends Component {
      
     // ====================== game begins ===========================
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState(this.defaultSettings)
     }
 

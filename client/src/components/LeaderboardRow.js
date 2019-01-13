@@ -4,8 +4,6 @@ import index from '../App';
 
 export default function LeaderboardRow(props) {
   return (
- 
-
       <Table.Row>
         <Table.Cell>
           <Header as='h4' className="leaderboard-header">
@@ -21,7 +19,6 @@ export default function LeaderboardRow(props) {
           {props.leaderboardUser.score}
         </Table.Cell>
       </Table.Row>
-
   )
 }
 

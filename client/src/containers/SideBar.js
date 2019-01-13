@@ -32,12 +32,12 @@ export default class SideBar extends Component {
   render() {
     return (
 
-      <div>
+    <React.Fragment>
       <PlayerInfo currentPoints={this.props.currentPoints} />
       <br></br>
       <ChatArea currentUser={ this.props.currentUser } userComments={this.state.userComments} />
       <CommentForm currentUser={ this.props.currentUser } addComment={this.addComment} />
-    </div>
+    </React.Fragment>
     )
   }
 }

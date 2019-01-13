@@ -68,68 +68,80 @@ export default class GameArea extends Component {
     return (
 
 
-    <div>
-      
+    <React.Fragment>
+    <Grid centered>
+        <Grid.Row columns={1}>
+          <Grid.Column width={9}>
+            <div className="game-image-form">
+              <GameImageGuessForm
+                updateScore={updateScore} 
+                correctAnswer={correctAnswer}
+                points={this.props.questionPoints} 
+                toggleForm={this.toggleForm} 
+                disableAllButtons={this.disableAllButtons} 
+                catchPhrase={catchPhrase}
+                toggleCatchPhrase={toggleCatchPhrase}
+                toggleFormState={this.state.toggleForm}
+                currentUser={currentUser}
+                currentPoints={currentPoints}
+                toggleLeaderboard={toggleLeaderboard}
+                />
+                </div>
+              </Grid.Column>
+          </Grid.Row>
+          </Grid>
+          <Grid centered>
+          <Grid.Row columns={2}>
+            <div id="game-image" className={this.city}>
+            <Grid.Column width={9}>
+              <Grid>
+                <Grid.Row columns={3}>
+                  <Grid.Column className="noPadding" >
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[0]}
+                  </Grid.Column>
+                  <Grid.Column className="noPadding">
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[1]}
+                  </Grid.Column>
+                  <Grid.Column className="noPadding">
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[2]}
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row columns={3}>
+                  <Grid.Column className="noPadding">
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[3]}
+                  </Grid.Column>
+                  <Grid.Column className="noPadding">
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[4]}
+                  </Grid.Column>
+                  <Grid.Column className="noPadding">
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[5]}
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row columns={3}>
+                  <Grid.Column className="noPadding">
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[6]}
+                  </Grid.Column>
+                  <Grid.Column className="noPadding">
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[7]}
+                  </Grid.Column>
+                  <Grid.Column className="noPadding">
+                    {this.quizQuestionsMap(quizQuestions, handleTileClick)[8]}
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Grid.Column>
+            </div>
+          
+              <Grid.Column width={4}>
+              <div className="padding-left">
+                <SideBar currentPoints={currentPoints} currentUser={currentUser} />
+                </div>
+              </Grid.Column>
+       
+          </Grid.Row>
 
-    <Grid >
-        <Grid.Column width={12}>
-          <div className="game-image-form">
-            <GameImageGuessForm
-              updateScore={updateScore} 
-              correctAnswer={correctAnswer}
-              points={this.props.questionPoints} 
-              toggleForm={this.toggleForm} 
-              disableAllButtons={this.disableAllButtons} 
-              catchPhrase={catchPhrase}
-              toggleCatchPhrase={toggleCatchPhrase}
-              toggleFormState={this.state.toggleForm}
-              currentUser={currentUser}
-              currentPoints={currentPoints}
-              toggleLeaderboard={toggleLeaderboard}
-              />
-          </div>
-
-
-    <div id="game-image" className={this.city}>
-
-      <div className="ui three column grid">
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[0]}
-      </div>
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[1]}
-      </div>
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[2]}
-      </div>
-      </div>
-      <div className="ui three column grid">
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[3]}
-      </div>
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[4]}
-      </div>
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[5]}
-      </div>
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[6]}
-      </div>
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[7]}
-      </div>
-      <div className="game-tile-col">
-      {this.quizQuestionsMap(quizQuestions, handleTileClick)[8]}
-      </div>
-    </div>
-  </div>
-  </Grid.Column>
-        <Grid.Column width={4}>
-          <SideBar currentPoints={ currentPoints } currentUser={ currentUser } />
-        </Grid.Column>
-  </Grid>
-  </div>
+      </Grid>
+  </React.Fragment>
 
     )
   }
