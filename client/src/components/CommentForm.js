@@ -46,20 +46,18 @@ export default class CommentForm extends Component {
   render() {
     const { handleChange, handleSubmit } = this
     return (
-      <div>
-      <Container>
-      <p>{this.state.renderComment}</p>
-      </Container>
-       
-       <Form onSubmit={handleSubmit}>
-          <Form.Field>
-            <label></label>
-            <input value={this.state.userComment} fluid label="Name" placeholder="Comment" name="userComment" onChange={handleChange}/>
-          </Form.Field>
-          <Button content='Add Comment' labelPosition='left' icon='edit' primary />
-        </Form>
-        
-      </div>
+      <React.Fragment>
+        <Container>
+        <p>{this.state.renderComment}</p>
+        </Container>
+        <Form onSubmit={handleSubmit}>
+            <Form.Field>
+              <label></label>
+              <input value={this.state.userComment} fluid label="Name" placeholder="Comment" name="userComment" onChange={handleChange}/>
+            </Form.Field>
+            <Button content='Add Comment' labelPosition='left' icon='edit' primary />
+          </Form>
+      </React.Fragment>
     )
   }
 }
