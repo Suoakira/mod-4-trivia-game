@@ -152,7 +152,10 @@ class GameTile extends Component {
         <div>
             {
             this.state.displayTile ?
-            null
+                    <div className="no-quiz-box">
+                    </div>
+
+
             :
                     <div className="quiz-box">
                         <div className="game-tile-col">
