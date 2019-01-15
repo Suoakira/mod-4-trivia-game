@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Header, Image, Icon } from 'semantic-ui-react'
+import { Grid, Header, Image, Icon, Segment } from 'semantic-ui-react'
 import GameTile from "../components/GameTile"
 import SideBar from '../containers/SideBar'
 import GameImageGuessForm from '../components/GameImageGuessForm'
@@ -69,27 +69,6 @@ export default class GameArea extends Component {
 
 
     <React.Fragment>
-    <Grid centered>
-        <Grid.Row columns={1}>
-          <Grid.Column width={9}>
-            <div className="game-image-form">
-              <GameImageGuessForm
-                updateScore={updateScore} 
-                correctAnswer={correctAnswer}
-                points={this.props.questionPoints} 
-                toggleForm={this.toggleForm} 
-                disableAllButtons={this.disableAllButtons} 
-                catchPhrase={catchPhrase}
-                toggleCatchPhrase={toggleCatchPhrase}
-                toggleFormState={this.state.toggleForm}
-                currentUser={currentUser}
-                currentPoints={currentPoints}
-                toggleLeaderboard={toggleLeaderboard}
-                />
-                </div>
-              </Grid.Column>
-          </Grid.Row>
-          </Grid>
           <Grid centered>
           <Grid.Row columns={2}>
             <div id="game-image" className={this.city}>
@@ -133,9 +112,30 @@ export default class GameArea extends Component {
             </div>
           
               <Grid.Column width={4}>
+           
               <div className="padding-left">
-                <SideBar currentPoints={currentPoints} currentUser={currentUser} />
+                {!this.state.toggleForm &&
+                <Segment>
+                <div className="game-image-form">
+                  <GameImageGuessForm
+                    updateScore={updateScore}
+                    correctAnswer={correctAnswer}
+                    points={this.props.questionPoints}
+                    toggleForm={this.toggleForm}
+                    disableAllButtons={this.disableAllButtons}
+                    catchPhrase={catchPhrase}
+                    toggleCatchPhrase={toggleCatchPhrase}
+                    toggleFormState={this.state.toggleForm}
+                    currentUser={currentUser}
+                    currentPoints={currentPoints}
+                    toggleLeaderboard={toggleLeaderboard}
+                  />
                 </div>
+                </Segment>
+                }
+                
+                <SideBar currentPoints={currentPoints} currentUser={currentUser} />
+              </div>
               </Grid.Column>
        
           </Grid.Row>
